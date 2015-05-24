@@ -1,0 +1,57 @@
+#!/bin/sh
+
+restore_freebsd()
+{
+    # restore from backup original freebsd files
+    cp -af /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/* /
+
+    if [ ! -f /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/boot/splash.pcx ]; then
+        rm -f /boot/splash.pcx
+    fi
+
+    for files in rc.local make.conf devfs.rules ; do
+        if [ ! -f /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/etc/$files ]; then
+            rm -f /etc/$files
+        fi
+    done
+
+    # restore from original packages files
+    if [ -d /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/backup/etc ] ; then
+        cp -af /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/backup/etc/* /etc
+    fi
+    if [ -d /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/backup/applications ];then
+        cp -af /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/backup/applications/* \
+    /usr/local/share/applications
+    fi
+}
+
+rem_filesfrom_freebsd()
+{
+    # removes X config files
+    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/override/etc/X11 ) ; do
+        rm -f /etc/X11/$files
+    done
+}
+
+restore_packages_settings()
+{
+    # removes htmlview alternative for cups
+    update-alternatives --altdir /usr/local/etc/alternatives --remove htmlview /usr/local/bin/firefox
+}
+
+case $2 in
+    DEINSTALL)
+    restore_freebsd
+    rem_filesfrom_freebsd
+    restore_packages_settings
+    ;;
+    POST-DEINSTALL)
+    #rm -Rf /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/
+    echo "ghostbsd-installed-common-settings was uninstalled."
+    ;;
+    *)
+    echo $2
+    ;;
+esac
+
+exit 0

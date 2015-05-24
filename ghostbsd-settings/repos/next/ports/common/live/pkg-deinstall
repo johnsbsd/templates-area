@@ -1,0 +1,42 @@
+#!/bin/sh
+
+restore_freebsd()
+{
+    # restore from backup original freebsd files
+    cp -af /usr/local/share/ghostbsd/common-live-settings-ASX64/base/backup/* /
+}
+
+restore_packages_settings()
+{
+    # revert sudoers hack
+    if [ -x /usr/local/bin/sudo ]; then
+        sed -i "" "s@%wheel ALL=(ALL) ALL@# %wheel ALL=(ALL) ALL@" /usr/local/etc/sudoers
+        sed -i "" "s@%sudo	ALL=(ALL) ALL@# %sudo	ALL=(ALL) ALL@" /usr/local/etc/sudoers
+    fi
+
+    update-alternatives --altdir /usr/local/etc/alternatives --remove htmlview /usr/local/bin/firefox
+}
+
+remove_files_from()
+{
+    for files in $(ls -l /usr/local/share/ghostbsd/common-live-settings-ASX64/etc/rc.d); do
+        rm -f /etc/rc.d/$files
+    done
+}
+
+case $2 in
+    DEINSTALL)
+    restore_freebsd
+    restore_packages_settings
+    remove_files_from
+    ;;
+    POST-DEINSTALL)
+    #rm -Rf /usr/local/share/ghostbsd/common-live-settings-ASX64/
+    echo "ghostbsd-live-common-settings-ASX64 was uninstalled."
+    ;;
+    *)
+    echo $2
+    ;;
+esac
+
+exit 0

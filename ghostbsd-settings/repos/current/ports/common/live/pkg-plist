@@ -1,0 +1,4 @@
+share/ghostbsd/common-live-settings-Karine/base/backup/etc/rc.d/mountcritlocal
+share/ghostbsd/common-live-settings-Karine/base/override/etc/rc.d/mountcritlocal
+share/ghostbsd/common-live-settings-Karine/etc/rc.d/unionfs
+share/ghostbsd/common-live-settings-Karine/etc/rc.d/uzip

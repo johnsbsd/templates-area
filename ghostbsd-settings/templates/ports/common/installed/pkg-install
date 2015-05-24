@@ -1,0 +1,95 @@
+#!/bin/sh
+
+backup_freebsd()
+{
+    # backup old files from FreeBSD base system
+    for tocopy in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/override/boot) ; do
+       if [ -f /boot/$tocopy ]; then
+            cp -af /boot/$tocopy /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/boot/
+        fi
+    done
+    # backup COPYRIGHT
+    cp -af /COPYRIGHT /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/
+
+    # backup files from etc
+    for tocopy in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/override/etc)     ; do
+       if [ -f /etc/$tocopy ]; then
+            cp -af /etc/$tocopy /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/etc/
+        fi
+    done
+    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches | cut -d . -f1,2) ; do
+        if [ -f /etc/$files ]; then
+            cp -af /etc/$files /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/etc/
+        fi
+    done
+    
+    # backup desktop files that will be override
+    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/override/applications) ; do
+        if [ -f /usr/local/share/applications/$files ]; then
+            cp -af  /usr/local/share/applications/$files /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/backup/applications
+        fi
+    done
+
+    # backup desktop files that will be override
+    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/override/etc/X11) ; do
+        if [ -f /etc/X11/$files ]; then
+            cp -af  /etc/X11/$files /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/backup/etc/X11
+        fi
+    done
+
+}
+
+freebsd_overrides()
+{
+    cp -af /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/override/* /
+}
+
+packages_overrides()
+{
+    cp -af /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/override/etc/* /etc
+    cp -af /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/override/applications/* \
+    /usr/local/share/applications
+}
+
+patch_etc_files()
+{
+    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches | cut -d . -f1,2 |grep -v devd.conf | grep -v sysctl.conf) ; do
+        cat /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches/$files.extra >> /etc/$files
+    done
+
+    if [ -z "$(cat /etc/devd.conf| grep ugen[0-9])" ] ; then
+         cat /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches/devd.conf.extra >> /etc/devd.conf
+    fi
+
+    if [ -z "$(cat /etc/sysctl.conf| grep vfs.usermount)" ] ; then
+         cat /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches/sysctl.conf.extra >> /etc/sysctl.conf
+    fi
+
+}
+
+packages_settings()
+{
+    #set htmlview alternative to firefox for cups
+    if [ -e /usr/local/bin/firefox ] ; then
+        update-alternatives --altdir /usr/local/etc/alternatives --install /usr/local/bin/htmlview htmlview /usr/local/bin/firefox 50
+    fi
+}
+
+case "$2" in
+    POST-INSTALL)
+    # backup old files from FreeBSD base system
+    backup_freebsd
+    # copy files from override to FreeBSD base system
+    freebsd_overrides
+    # copy files from base direct over FreeBSD base system 
+    packages_overrides
+    # patch files from etc
+    patch_etc_files
+    # apply packages settings
+    packages_settings
+    ;;
+    *)
+    ;;
+esac
+
+exit 0

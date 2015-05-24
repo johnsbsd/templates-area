@@ -1,0 +1,4 @@
+share/ghostbsd/common-live-settings-@CODENAME_SAFE@/base/backup/etc/rc.d/mountcritlocal
+share/ghostbsd/common-live-settings-@CODENAME_SAFE@/base/override/etc/rc.d/mountcritlocal
+share/ghostbsd/common-live-settings-@CODENAME_SAFE@/etc/rc.d/unionfs
+share/ghostbsd/common-live-settings-@CODENAME_SAFE@/etc/rc.d/uzip

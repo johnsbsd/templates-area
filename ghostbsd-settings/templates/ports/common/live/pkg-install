@@ -1,0 +1,49 @@
+#!/bin/sh
+
+backup_freebsd()
+{
+    # backup files from etc
+    for tocopy in $(ls /usr/local/share/ghostbsd/common-live-settings-@CODENAME_SAFE@/base/override/etc/rc.d) ; do
+       if [ -f /etc/rc.d/$tocopy ]; then
+            cp -af /etc/rc.d/$tocopy /usr/local/share/ghostbsd/common-live-settings-@CODENAME_SAFE@/base/backup/etc/rc.d/
+        fi
+    done
+}
+
+freebsd_overrides()
+{
+    cp -af /usr/local/share/ghostbsd/common-live-settings-@CODENAME_SAFE@/base/override/* /
+}
+
+
+packages_settings()
+{
+
+    # hack sudoers for live mode
+    if [ -x /usr/local/bin/sudo ]; then
+        sed -i "" "s@# %wheel ALL=(ALL) ALL@%wheel ALL=(ALL) ALL@" /usr/local/etc/sudoers
+        sed -i "" "s@# %sudo	ALL=(ALL) ALL@%sudo	ALL=(ALL) ALL@" /usr/local/etc/sudoers
+    fi
+}
+
+copy_files_in()
+{
+    cp -af /usr/local/share/ghostbsd/common-live-settings-@CODENAME_SAFE@/etc/* /etc
+}
+
+case "$2" in
+    POST-INSTALL)
+    # backup old files from FreeBSD base system
+    backup_freebsd
+    # copy files from override to FreeBSD base system
+    freebsd_overrides
+    # apply packages settings
+    packages_settings
+    # copy files from base/etc to etc
+    copy_files_in
+    ;;
+    *)
+    ;;
+esac
+
+exit 0

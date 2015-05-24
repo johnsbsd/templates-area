@@ -1,0 +1,4 @@
+share/ghostbsd/common-live-settings-ASX64/base/backup/etc/rc.d/mountcritlocal
+share/ghostbsd/common-live-settings-ASX64/base/override/etc/rc.d/mountcritlocal
+share/ghostbsd/common-live-settings-ASX64/etc/rc.d/unionfs
+share/ghostbsd/common-live-settings-ASX64/etc/rc.d/uzip
