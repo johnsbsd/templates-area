@@ -30,6 +30,7 @@ rm -Rf ./sources/*
 for i in $(ls ports/mate/installed/) ; do
 sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
     -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
     -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \

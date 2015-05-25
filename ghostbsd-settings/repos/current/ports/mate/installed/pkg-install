@@ -40,6 +40,40 @@ case "$2" in
     fi
     mv /usr/local/share/mate-panel/layouts/default.layout /usr/local/share/mate-panel/layouts/mate.layout
     cp -af /usr/local/share/ghostbsd/mate-installed-settings-Karine/mate-panel/panel-default-layout.mate /usr/local/share/mate-panel/layouts/default.layout
+
+    # User gtk-bookmarks.
+    printf "file:///root/Documents Documents
+file:///root/Downloads Downloads
+file:///root/Movies Movies
+file:///root/Music Music
+file:///root/Pictures Pictures
+" > /root/.gtk-bookmarks
+
+    mkdir -p /root/Documents
+    mkdir -p /root/Downloads
+    mkdir -p /root/Movies
+    mkdir -p /root/Music
+    mkdir -p /root/Pictures
+
+    printf "file:///home/ghostbsd/Documents Documents
+file:///home/ghostbsd/Downloads Downloads
+file:///home/ghostbsd/Movies Movies
+file:///home/ghostbsd/Music Music
+file:///home/ghostbsd/Pictures Pictures
+" > /home/ghostbsd/.gtk-bookmarks
+
+    chmod g+rwx /home/ghostbsd/.gtk-bookmarks
+    mkdir -p /home/ghostbsd/Documents
+    chmod g+rwx /home/ghostbsd/Documents
+    mkdir -p /home/ghostbsd/Downloads
+    chmod g+rwx /home/ghostbsd/Downloads
+    mkdir -p /home/ghostbsd/Movies 
+    chmod g+rwx /home/ghostbsd/Movies
+    mkdir -p /home/ghostbsd/Music
+    chmod g+rwx /home/ghostbsd/Music
+    mkdir -p /home/ghostbsd/Pictures
+    chmod g+rwx /home/ghostbsd/Pictures
+
     ;;
 esac
 
