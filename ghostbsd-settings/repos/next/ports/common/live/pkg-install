@@ -24,6 +24,21 @@ packages_settings()
         sed -i "" "s@# %wheel ALL=(ALL) ALL@%wheel ALL=(ALL) ALL@" /usr/local/etc/sudoers
         sed -i "" "s@# %sudo	ALL=(ALL) ALL@%sudo	ALL=(ALL) ALL@" /usr/local/etc/sudoers
     fi
+
+    # Setting installer
+    if [ ! -d /home/ghostbsd/Desktop ]; then
+        mkdir -p /home/ghostbsd/Desktop
+    fi
+
+    if [ -f /usr/local/share/applications/gbi.desktop ]; then
+        # removes FreeBSD pc-sysinstall files
+        rm -rf /usr/sbin/pc-sysinstall
+        rm -rf /usr/share/pc-sysinstall
+        #put the installer on the desktop
+        cp -pf /usr/local/share/applications/gbi.desktop /home/ghostbsd/Desktop/
+        chown -R 1000:0 /home/ghostbsd/Desktop/gbi.desktop
+    fi
+
 }
 
 copy_files_in()
