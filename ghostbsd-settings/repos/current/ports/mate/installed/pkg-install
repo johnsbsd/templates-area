@@ -74,6 +74,15 @@ file:///home/ghostbsd/Pictures Pictures
     mkdir -p /home/ghostbsd/Pictures
     chmod g+rwx /home/ghostbsd/Pictures
 
+    # Put ghostbsd-irc to desktop
+    if [ ! d /home/ghostbsd/Desktop ]; then
+        mkdir -p /home/ghostbsd/Desktop
+    fi
+    
+    if [ -f /usr/local/share/applications/ghostbsd-irc.desktop ]; then
+        cp /usr/local/share/applications/ghostbsd-irc.desktop /home/ghostbsd/Desktop 
+    fi
+    chmod g+rwx /home/ghostbsd/Desktop/ghostbsd-irc.desktop
     ;;
 esac
 
