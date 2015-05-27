@@ -21,9 +21,11 @@ rm -Rf ./sources/*
 
 # copy from templates
  cp -af ../../templates/ports/* ./ports
- cp -af ../../templates/sources/ ./sources
+ cp -af ../../templates/sources/* ./sources
  mv -f $(find ./sources/ -type d -name common-installed-settings-@CODENAME_SAFE@) $(find ./sources/ -type d -name common-installed-settings-@CODENAME_SAFE@| sed -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g")
  mv -f $(find ./sources/ -type d -name common-live-settings-@CODENAME_SAFE@) $(find ./sources/ -type d -name common-live-settings-@CODENAME_SAFE@| sed -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g")
+ mv -f $(find ./sources/ -type d -name @DISTRO_SAFE@) $(find ./sources/ -type d -name @DISTRO_SAFE@| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+ mv -f $(find ./sources/ -type f -name @DISTRO_SAFE@.cfg) $(find ./sources/ -type f -name @DISTRO_SAFE@.cfg| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
  
 # ports/mate
 
@@ -80,6 +82,34 @@ sed -e "s/\@WALLPAPER\@/${WALLPAPER}/g" \
     ../../templates/sources/mate/installed/schemas/$i \
     > sources/mate/installed/schemas/$i
 done
+
+# sources grub2
+for i in boot/grub/grub.cfg ; do
+    sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+        -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    ../../templates/sources/grub2/$i \
+    > sources/grub2/$i
+done
+
+sed -i "" "s/\@DISTRO\@/${DISTRO}/g" \
+sources/grub2/boot/grub/themes/${DISTRO_SAFE}/theme.txt
+
+# ports grub2
+for i in $(ls ports/grub2/) ; do
+sed     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/grub2/$i \
+    > ports/grub2/$i
+done
+
+# sources/xfce/installed/etc/default/grub.d
+
+sed -i "" "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    sources/xfce/installed/etc/default/grub.d/${DISTRO_SAFE}.cfg 
+
+sed -i "" "s/\@DISTRO\@/${DISTRO}/g" \
+    sources/xfce/installed/etc/default/grub.d/${DISTRO_SAFE}.cfg 
 
 touch ./rules
 

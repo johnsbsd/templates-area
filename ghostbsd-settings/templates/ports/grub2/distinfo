@@ -1,0 +1,2 @@
+SHA256 (@DISTRO_SAFE@-grub2-settings-@PORT_VERSION@.tar.gz) = 4751df2f3b7d1ffffdbebdc5c11f7db0ac0788649a375b907adf36c4c03b0297
+SIZE (@DISTRO_SAFE@-grub2-settings-@PORT_VERSION@.tar.gz) = 615
