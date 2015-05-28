@@ -75,6 +75,19 @@ packages_settings()
     fi
 }
 
+userhome_settings()
+{
+ # Put ghostbsd-irc to desktop
+    if [ ! d /home/@GHOSTBSD_USER@/Desktop ]; then
+        mkdir -p /home/@GHOSTBSD_USER@/Desktop
+    fi
+    
+    if [ -f /usr/local/share/applications/ghostbsd-irc.desktop ]; then
+        cp /usr/local/share/applications/ghostbsd-irc.desktop /home/@GHOSTBSD_USER@/Desktop 
+    fi
+    chmod g+rwx /home/@GHOSTBSD_USER@/Desktop/ghostbsd-irc.desktop
+}
+
 case "$2" in
     POST-INSTALL)
     # backup old files from FreeBSD base system
@@ -87,6 +100,8 @@ case "$2" in
     patch_etc_files
     # apply packages settings
     packages_settings
+    # apply settings in userhome
+    userhome_settings
     ;;
     *)
     ;;

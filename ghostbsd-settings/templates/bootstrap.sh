@@ -25,8 +25,9 @@ rm -Rf ./sources/*
  mv -f $(find ./sources/ -type d -name common-installed-settings-@CODENAME_SAFE@) $(find ./sources/ -type d -name common-installed-settings-@CODENAME_SAFE@| sed -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g")
  mv -f $(find ./sources/ -type d -name common-live-settings-@CODENAME_SAFE@) $(find ./sources/ -type d -name common-live-settings-@CODENAME_SAFE@| sed -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g")
  mv -f $(find ./sources/ -type d -name @DISTRO_SAFE@) $(find ./sources/ -type d -name @DISTRO_SAFE@| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
- mv -f $(find ./sources/ -type f -name @DISTRO_SAFE@.cfg) $(find ./sources/ -type f -name @DISTRO_SAFE@.cfg| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
- 
+ mv -f $(find ./sources/mate -type f -name @DISTRO_SAFE@.cfg) $(find ./sources/mate -type f -name @DISTRO_SAFE@.cfg | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+ mv -f $(find ./sources/xfce -type f -name @DISTRO_SAFE@.cfg) $(find ./sources/xfce -type f -name @DISTRO_SAFE@.cfg | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+
 # ports/mate
 
 for i in $(ls ports/mate/installed/) ; do
@@ -111,6 +112,38 @@ sed -i "" "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
 sed -i "" "s/\@DISTRO\@/${DISTRO}/g" \
     sources/xfce/installed/etc/default/grub.d/${DISTRO_SAFE}.cfg 
 
-touch ./rules
+# sources /xfce/installed/etc/xdg/xfce4/xfconf/
+
+for i in xfce4-desktop.xml xfce4-panel.xml  ; do
+sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@WALLPAPER\@/${WALLPAPER}/g" \
+    -e "s/\@GTK_YHEME\@/${GTK_THEME}/g" \
+    ../../templates/sources/xfce/installed/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/$i \
+    > sources/xfce/installed/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/$i
+
+for i in $(ls ports/xfce/installed/) ; do
+sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
+    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/xfce/installed/$i \
+    > ports/xfce/installed/$i
+done
+
+for i in $(ls ports/xfce/live/) ; do
+sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/xfce/live/$i \
+    > ports/xfce/live/$i
+done
+
+done
+
+touch rules
 
 exit 0
