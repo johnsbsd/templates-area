@@ -22,16 +22,28 @@ rm -Rf ./sources/*
 # copy from templates
  cp -af ../../templates/ports/* ./ports
  cp -af ../../templates/sources/* ./sources
+
+ # renames dirs and files under common settings
  mv -f $(find ./sources/ -type d -name common-installed-settings-@CODENAME_SAFE@) $(find ./sources/ -type d -name common-installed-settings-@CODENAME_SAFE@| sed -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g")
  mv -f $(find ./sources/ -type d -name common-live-settings-@CODENAME_SAFE@) $(find ./sources/ -type d -name common-live-settings-@CODENAME_SAFE@| sed -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g")
- mv -f $(find ./sources/ -type d -name @DISTRO_SAFE@) $(find ./sources/ -type d -name @DISTRO_SAFE@| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
- mv -f $(find ./sources/mate -type f -name @DISTRO_SAFE@.cfg) $(find ./sources/mate -type f -name @DISTRO_SAFE@.cfg | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
- mv -f $(find ./sources/xfce -type f -name @DISTRO_SAFE@.cfg) $(find ./sources/xfce -type f -name @DISTRO_SAFE@.cfg | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+ mv -f $(find ./sources/common/installed -type d -name @DISTRO_SAFE@) $(find ./sources/common/installed -type d -name @DISTRO_SAFE@| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+ mv -f $(find ./sources/common/live -type d -name @DISTRO_SAFE@) $(find ./sources/common/live -type d -name @DISTRO_SAFE@| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
 
-#if [ -n "${CODENAME_SAFE}" ]; then
+# renames files and dirs uder mate settings
+ mv -f $(find ./sources/mate -type d -name @DISTRO_SAFE@) $(find ./sources/mate -type d -name @DISTRO_SAFE@ | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+ mv -f $(find ./sources/mate -type f -name @DISTRO_SAFE@.xml) $(find ./sources/mate -type f -name @DISTRO_SAFE@.xml | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+mv -f $(find ./sources/mate/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-mate-installed-policy.pkla) $(find ./sources/mate/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-mate-installed-policy.pkla | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
 
+# renames files and dirs under gnome settings
+ mv -f $(find ./sources/gnome -type d -name @DISTRO_SAFE@) $(find ./sources/gnome -type d -name @DISTRO_SAFE@ | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+ mv -f $(find ./sources/gnome/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-gnome-installed-policy.pkla) $(find ./sources/gnome/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-gnome-installed-policy.pkla | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+
+# renames dirs under grub2
+ mv -f $(find ./sources/grub2 -type d -name @DISTRO_SAFE@) $(find ./sources/grub2 -type d -name @DISTRO_SAFE@| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+
+### PORTS ####
+#================
 # ports/mate
-
 for i in $(ls ports/mate/installed/) ; do
 sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
@@ -53,8 +65,29 @@ sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     > ports/mate/live/$i
 done
 
-#ports/common
+# ports/gnome
+for i in $(ls ports/gnome/installed/) ; do
+sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
+    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/gnome/installed/$i \
+    > ports/gnome/installed/$i
+done
 
+for i in $(ls ports/gnome/live/) ; do
+sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/gnome/live/$i \
+    > ports/gnome/live/$i
+done
+
+#ports/common
 for i in $(ls ports/common/installed/) ; do
 sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
@@ -76,6 +109,18 @@ sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     > ports/common/live/$i
 done
 
+# ports grub2
+for i in $(ls ports/grub2/) ; do
+sed     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/grub2/$i \
+    > ports/grub2/$i
+done
+
+
+### MATE ####
+#================
 # sources/mate/installed/schemas
 
 for i in $(ls sources/mate/installed/schemas) ; do
@@ -86,6 +131,19 @@ sed -e "s/\@WALLPAPER\@/${WALLPAPER}/g" \
     > sources/mate/installed/schemas/$i
 done
 
+# sources/mate/installed/etc/default/grub
+
+sed -i "" "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    sources/mate/installed/${DISTRO_SAFE}/etc/default/grub
+
+sed -i "" "s/\@DISTRO\@/${DISTRO}/g" \
+    sources/mate/installed/${DISTRO_SAFE}/etc/default/grub 
+
+sed -i "" "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    sources/mate/installed/${DISTRO_SAFE}/etc/default/grub 
+
+### GRUB2 ###
+#====================
 # sources grub2
 for i in boot/grub/grub.cfg ; do
     sed -e "s/\@DISTRO\@/${DISTRO}/g" \
@@ -97,25 +155,20 @@ done
 sed -i "" "s/\@DISTRO\@/${DISTRO}/g" \
 sources/grub2/boot/grub/themes/${DISTRO_SAFE}/theme.txt
 
-# ports grub2
-for i in $(ls ports/grub2/) ; do
-sed     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
-    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
-    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
-    ../../templates/ports/grub2/$i \
-    > ports/grub2/$i
-done
-
-# sources/xfce/installed/etc/default/grub.d
-
+### XFCE ###
+#==========
+# sources/xfce/installed/etc/default/grub
 sed -i "" "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
-    sources/xfce/installed/etc/default/grub.d/${DISTRO_SAFE}.cfg 
+    sources/xfce/installed/etc/default/grub
 
 sed -i "" "s/\@DISTRO\@/${DISTRO}/g" \
-    sources/xfce/installed/etc/default/grub.d/${DISTRO_SAFE}.cfg 
+    sources/xfce/installed/etc/default/grub 
+
+sed -i "" "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    sources/xfce/installed/etc/default/grub 
+
 
 # sources /xfce/installed/etc/xdg/xfce4/xfconf/
-
 for i in xfce4-desktop.xml xfce4-panel.xml  ; do
 sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
     -e "s/\@WALLPAPER\@/${WALLPAPER}/g" \
@@ -123,34 +176,52 @@ sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
     ../../templates/sources/xfce/installed/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/$i \
     > sources/xfce/installed/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/$i
 
-for i in $(ls ports/xfce/installed/) ; do
-sed -e "s/\@DISTRO\@/${DISTRO}/g" \
-    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
-    -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
-    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
-    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
-    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
-    ../../templates/ports/xfce/installed/$i \
-    > ports/xfce/installed/$i
-done
+    for i in $(ls ports/xfce/installed/) ; do
+        sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+        -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+        -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
+        -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+        -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+        -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+        ../../templates/ports/xfce/installed/$i \
+        > ports/xfce/installed/$i
+    done
 
-for i in $(ls ports/xfce/live/) ; do
-sed -e "s/\@DISTRO\@/${DISTRO}/g" \
-    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
-    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
-    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
-    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
-    ../../templates/ports/xfce/live/$i \
-    > ports/xfce/live/$i
+    for i in $(ls ports/xfce/live/) ; do
+        sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+        -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+        -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+        -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+        -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+        ../../templates/ports/xfce/live/$i \
+        > ports/xfce/live/$i
+    done
 done
-
-done
+#=================
 
 if [ "${CODENAME_SAFE}" == "null" ]; then
+    # renames dirs and files under common settings
+#    mv -f $(find ./sources/ -type d -name common-installed-settings-${CODENAME_SAFE}) $(find ./sources/ -type d -name common-installed-settings)
+#    mv -f $(find ./sources/ -type d -name common-live-settings-${CODENAME_SAFE}) $(find ./sources/ -type d -name common-live-settings)
+
+# ports/gnome
+for i in $(find ports -type f -name pkg-install ) ; do
+    sed  -i "" "s/-null//g"  $i
+done
+
+for i in $(find ports -type f -name pkg-deinstall ) ; do
+    sed  -i "" "s/-null//g"  $i
+done
+
+for i in $(find ports -type f -name pkg-plist ) ; do
+    sed  -i "" "s/-null//g"  $i
+done
+
     for i in $(find ports -type f -name Makefile )\
         $(find ports -type f -name distinfo ) ; do
         sed  -i "" "s/-null//g"  $i
     done
+
     workdir=$(pwd)
     for i in $(find ports -type d -depth 2) ; do
         cd $i && make makesum

@@ -1,20 +1,20 @@
-# New ports collection makefile for: mate settings in live mode
+# New ports collection makefile for: gnome settings in live mode
 # Date created:        11 may 2015
 # Whom:                angelescuo@yahoo.com
 #
 # $FreeBSD$
 #
 
-PORTNAME= 	mate-live-settings-Karine
-PORTVERSION=	1.0
+PORTNAME= 	gnome-live-settings-@CODENAME_SAFE@
+PORTVERSION=	@PORT_VERSION@
 CATEGORIES=	x11
 
 MAINTAINER=	angelescuo@yahoo.com
-COMMENT=	GhostBSD mate settings in live mode
+COMMENT=	@DISTRO@ gnome settings in live mode
 LICENSE =	BSD
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	GhostBSD
+GH_ACCOUNT=	@ORGANIZATION@
 
 RUN_DEPENDS=	glib-compile-schemas:${PORTSDIR}/devel/glib-2.0
 

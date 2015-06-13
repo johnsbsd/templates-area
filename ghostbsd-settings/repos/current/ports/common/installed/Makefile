@@ -14,11 +14,7 @@ COMMENT=	GhostBSD common settings in installed mode
 LICENSE =	BSD
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	@ORANIZATION@
-GH_PROJECT=	${PORTNAME}
-GH_TAGNAME=	${PORTVERSION}
-GH_COMMIT=	954ce53
-
+GH_ACCOUNT=	GhostBSD
 
 NO_BUILD=	yes
 RUN_DEPENDS= dpkg:${PORTSDIR}/archivers/dpkg
