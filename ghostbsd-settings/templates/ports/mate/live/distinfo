@@ -1,2 +1,2 @@
-SHA256 (mate-live-settings-@CODENAME_SAFE@-@PORT_VERSION@.tar.gz) = 4751df2f3b7d1ffffdbebdc5c11f7db0ac0788649a375b907adf36c4c03b0297
-SIZE (mate-live-settings-@CODENAME_SAFE@-@PORT_VERSION@.tar.gz) = 615
+SHA256 (@DISTRO@-@DISTRO_SAFE@-mate-live-settings-@CODENAME_SAFE@-@PORT_VERSION@_GH0.tar.gz) = 4751df2f3b7d1ffffdbebdc5c11f7db0ac0788649a375b907adf36c4c03b0297
+SIZE (@DISTRO@-@DISTRO_SAFE@-mate-live-settings-@CODENAME_SAFE@-@PORT_VERSION@_GH0.tar.gz) = 615

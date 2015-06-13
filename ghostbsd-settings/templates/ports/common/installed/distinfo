@@ -1,2 +1,2 @@
-SHA256 (@DISTRO_SAFE@-installed-common-settings-@CODENAME_SAFE@-@PORT_VERSION@.tar.gz) = 12b0d418e1acb874c610eeb44b623e98fbe419bbfab40b13b70fa379262dac8d
-SIZE (@DISTRO_SAFE@-installed-common-settings-@CODENAME_SAFE@-@PORT_VERSION@.tar.gz) = 586841
+SHA256 (@DISTRO@-@DISTRO_SAFE@-installed-common-settings-@CODENAME_SAFE@-@PORT_VERSION@_GH0.tar.gz) = 12b0d418e1acb874c610eeb44b623e98fbe419bbfab40b13b70fa379262dac8d
+SIZE (@DISTRO@-@DISTRO_SAFE@-installed-common-settings-@CODENAME_SAFE@-@PORT_VERSION@_GH0.tar.gz) = 586841

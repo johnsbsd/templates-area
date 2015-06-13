@@ -28,6 +28,8 @@ rm -Rf ./sources/*
  mv -f $(find ./sources/mate -type f -name @DISTRO_SAFE@.cfg) $(find ./sources/mate -type f -name @DISTRO_SAFE@.cfg | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
  mv -f $(find ./sources/xfce -type f -name @DISTRO_SAFE@.cfg) $(find ./sources/xfce -type f -name @DISTRO_SAFE@.cfg | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
 
+#if [ -n "${CODENAME_SAFE}" ]; then
+
 # ports/mate
 
 for i in $(ls ports/mate/installed/) ; do
@@ -143,6 +145,19 @@ sed -e "s/\@DISTRO\@/${DISTRO}/g" \
 done
 
 done
+
+if [ "${CODENAME_SAFE}" == "null" ]; then
+    for i in $(find ports -type f -name Makefile )\
+        $(find ports -type f -name distinfo ) ; do
+        sed  -i "" "s/-null//g"  $i
+    done
+    workdir=$(pwd)
+    for i in $(find ports -type d -depth 2) ; do
+        cd $i && make makesum
+        cd $workdir
+    done
+fi
+
 
 touch rules
 
