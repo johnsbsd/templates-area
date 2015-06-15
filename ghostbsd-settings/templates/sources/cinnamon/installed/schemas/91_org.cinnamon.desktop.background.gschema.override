@@ -1,3 +1,3 @@
-[org.gnome.desktop.screensaver]
+[org.cinnamon.desktop.background]
 picture-uri='file:///usr/local/share/backgrounds/@DISTRO_SAFE@/@WALLPAPER@.jpg'
 picture-options='stretched'

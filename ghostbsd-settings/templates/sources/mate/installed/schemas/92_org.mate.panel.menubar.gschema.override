@@ -1,2 +1,2 @@
 [org.mate.panel.menubar]
-icon-name='ghostbsd'
+icon-name='@DISTRO_SAFE@'

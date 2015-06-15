@@ -36,7 +36,13 @@ mv -f $(find ./sources/mate/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTR
 
 # renames files and dirs under gnome settings
  mv -f $(find ./sources/gnome -type d -name @DISTRO_SAFE@) $(find ./sources/gnome -type d -name @DISTRO_SAFE@ | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+ mv -f $(find ./sources/gnome -type f -name @DISTRO_SAFE@.xml) $(find ./sources/gnome -type f -name @DISTRO_SAFE@.xml | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
  mv -f $(find ./sources/gnome/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-gnome-installed-policy.pkla) $(find ./sources/gnome/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-gnome-installed-policy.pkla | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+
+# renames files and dirs under cinnamon settings
+ mv -f $(find ./sources/cinnamon -type d -name @DISTRO_SAFE@) $(find ./sources/cinnamon -type d -name @DISTRO_SAFE@ | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+ mv -f $(find ./sources/cinnamon -type f -name @DISTRO_SAFE@.xml) $(find ./sources/cinnamon -type f -name @DISTRO_SAFE@.xml | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+ mv -f $(find ./sources/cinnamon/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-cinnamon-installed-policy.pkla) $(find ./sources/cinnamon/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-cinnamon-installed-policy.pkla | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
 
 # renames dirs under grub2
  mv -f $(find ./sources/grub2 -type d -name @DISTRO_SAFE@) $(find ./sources/grub2 -type d -name @DISTRO_SAFE@| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
@@ -87,6 +93,28 @@ sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     > ports/gnome/live/$i
 done
 
+# ports/cinnamon
+for i in $(ls ports/cinnamon/installed/) ; do
+sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
+    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/cinnamon/installed/$i \
+    > ports/cinnamon/installed/$i
+done
+
+for i in $(ls ports/cinnamon/live/) ; do
+sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/cinnamon/live/$i \
+    > ports/cinnamon/live/$i
+done
+
 #ports/common
 for i in $(ls ports/common/installed/) ; do
 sed -e "s/\@DISTRO\@/${DISTRO}/g" \
@@ -127,6 +155,7 @@ for i in $(ls sources/mate/installed/schemas) ; do
 sed -e "s/\@WALLPAPER\@/${WALLPAPER}/g" \
     -e "s/\@GTK_THEME\@/${GTK_THEME}/g" \
     -e "s/\@MATE_ICONSET\@/${MATE_ICONSET}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
     ../../templates/sources/mate/installed/schemas/$i \
     > sources/mate/installed/schemas/$i
 done
@@ -141,6 +170,60 @@ sed -i "" "s/\@DISTRO\@/${DISTRO}/g" \
 
 sed -i "" "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
     sources/mate/installed/${DISTRO_SAFE}/etc/default/grub 
+
+### GNOME ####
+#================
+# sources/gnome/installed/schemas
+
+for i in $(ls sources/gnome/installed/schemas) ; do
+sed -e "s/\@WALLPAPER\@/${WALLPAPER}/g" \
+    -e "s/\@GTK_THEME\@/${GTK_THEME}/g" \
+    -e "s/\@MATE_ICONSET\@/${MATE_ICONSET}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    ../../templates/sources/gnome/installed/schemas/$i \
+    > sources/gnome/installed/schemas/$i
+done
+
+# sources/gnome/installed/etc/default/grub
+
+sed -i "" "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    sources/gnome/installed/${DISTRO_SAFE}/etc/default/grub
+
+sed -i "" "s/\@DISTRO\@/${DISTRO}/g" \
+    sources/gnome/installed/${DISTRO_SAFE}/etc/default/grub 
+
+sed -i "" "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    sources/gnome/installed/${DISTRO_SAFE}/etc/default/grub 
+
+### CINNAMON ####
+#================
+# sources/cinnamon/installed/schemas
+
+for i in $(ls sources/cinnamon/installed/schemas) ; do
+sed -e "s/\@WALLPAPER\@/${WALLPAPER}/g" \
+    -e "s/\@GTK_THEME\@/${GTK_THEME}/g" \
+    -e "s/\@MATE_ICONSET\@/${MATE_ICONSET}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    ../../templates/sources/cinnamon/installed/schemas/$i \
+    > sources/cinnamon/installed/schemas/$i
+done
+
+# sources/cinnamon/installed/etc/default/grub
+
+sed -i "" "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    sources/cinnamon/installed/${DISTRO_SAFE}/etc/default/grub
+
+sed -i "" "s/\@DISTRO\@/${DISTRO}/g" \
+    sources/cinnamon/installed/${DISTRO_SAFE}/etc/default/grub 
+
+sed -i "" "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    sources/cinnamon/installed/${DISTRO_SAFE}/etc/default/grub 
+
+# sources/cinnamon/installed/etc/skel/cinnamon/configs/menu@cinnamon.org/menu@cinnamon.org.json
+
+sed -i "" "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    sources/cinnamon/installed/${DISTRO_SAFE}/etc/skel/cinnamon/configs/menu@cinnamon.org/menu@cinnamon.org.json
+
 
 ### GRUB2 ###
 #====================
@@ -200,11 +283,8 @@ done
 #=================
 
 if [ "${CODENAME_SAFE}" == "null" ]; then
-    # renames dirs and files under common settings
-#    mv -f $(find ./sources/ -type d -name common-installed-settings-${CODENAME_SAFE}) $(find ./sources/ -type d -name common-installed-settings)
-#    mv -f $(find ./sources/ -type d -name common-live-settings-${CODENAME_SAFE}) $(find ./sources/ -type d -name common-live-settings)
 
-# ports/gnome
+# ports
 for i in $(find ports -type f -name pkg-install ) ; do
     sed  -i "" "s/-null//g"  $i
 done

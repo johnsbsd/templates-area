@@ -1,4 +1,4 @@
 [org.mate.background]
-picture-filename='/usr/local/share/backgrounds/ghostbsd/@WALLPAPER@.jpg'
+picture-filename='/usr/local/share/backgrounds/@DISTRO_SAFE@/@WALLPAPER@.jpg'
 picture-options='stretched'
 show-desktop-icons=true
