@@ -3,7 +3,7 @@
 restore_freebsd()
 {
     # restore from backup original freebsd files
-    cp -af /usr/local/share/ghostbsd/common-live-settings-@CODENAME_SAFE@/base/backup/* /
+    cp -af /usr/local/share/@DISTRO_SAFE@/common-live-settings-@CODENAME_SAFE@/base/backup/* /
 }
 
 restore_packages_settings()
@@ -19,7 +19,7 @@ restore_packages_settings()
 
 remove_files_from()
 {
-    for files in $(ls -l /usr/local/share/ghostbsd/common-live-settings-@CODENAME_SAFE@/etc/rc.d); do
+    for files in $(ls -l /usr/local/share/@DISTRO_SAFE@/common-live-settings-@CODENAME_SAFE@/etc/rc.d); do
         rm -f /etc/rc.d/$files
     done
 }
@@ -31,8 +31,8 @@ case $2 in
     remove_files_from
     ;;
     POST-DEINSTALL)
-    #rm -Rf /usr/local/share/ghostbsd/common-live-settings-@CODENAME_SAFE@/
-    echo "ghostbsd-live-common-settings-@CODENAME_SAFE@ was uninstalled."
+    #rm -Rf /usr/local/share/@DISTRO_SAFE@/common-live-settings-@CODENAME_SAFE@/
+    echo "@DISTRO_SAFE@-live-common-settings-@CODENAME_SAFE@ was uninstalled."
     ;;
     *)
     echo $2

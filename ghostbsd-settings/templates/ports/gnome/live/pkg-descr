@@ -1,3 +1,3 @@
-These are gnome settings for ghostbsd  in live mode .
+These are gnome settings for @DISTRO_SAFE@  in live mode .
 
-WWW: http://www.ghostbsd.org/
+WWW: http://www.@DISTRO_SAFE@.org/

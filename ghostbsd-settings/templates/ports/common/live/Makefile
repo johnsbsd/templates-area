@@ -21,6 +21,6 @@ RUN_DEPENDS= dpkg:${PORTSDIR}/archivers/dpkg \
 		sudo:${PORTSDIR}/security/sudo
 
 do-install:
-	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd
-	@${CP} -R   ${WRKSRC}/ghostbsd/* ${STAGEDIR}/${PREFIX}/share/ghostbsd
+	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/@DISTRO_SAFE@
+	@${CP} -R   ${WRKSRC}/@DISTRO_SAFE@/* ${STAGEDIR}/${PREFIX}/share/@DISTRO_SAFE@
 .include <bsd.port.mk>

@@ -22,10 +22,10 @@ RUN_DEPENDS=	glib-compile-schemas:${PORTSDIR}/devel/glib-2.0 \
 NO_BUILD=	yes
 
 do-install:
-	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd/gnome-installed-settings-@CODENAME_SAFE@
-	@${CP} -R   ${WRKSRC}/ghostbsd/* ${STAGEDIR}/${PREFIX}/share/ghostbsd/gnome-installed-settings-@CODENAME_SAFE@
+	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/@DISTRO_SAFE@/gnome-installed-settings-@CODENAME_SAFE@
+	@${CP} -R   ${WRKSRC}/@DISTRO_SAFE@/* ${STAGEDIR}/${PREFIX}/share/@DISTRO_SAFE@/gnome-installed-settings-@CODENAME_SAFE@
 	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/gnome-background-properties
-	@${CP} ${WRKSRC}/gnome-background-properties/ghostbsd.xml ${STAGEDIR}/${PREFIX}/share/gnome-background-properties
+	@${CP} ${WRKSRC}/gnome-background-properties/@DISTRO_SAFE@.xml ${STAGEDIR}/${PREFIX}/share/gnome-background-properties
 	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/glib-2.0/schemas
 	@${CP} -R   ${WRKSRC}/schemas/* ${STAGEDIR}/${PREFIX}/share/glib-2.0/schemas
 .include <bsd.port.mk>

@@ -1,8 +1,8 @@
-share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/etc/default/grub.d/desktopbsd.cfg
-share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/etc/polkit-1/localauthority/10-vendor.d/10-desktopbsd-gnome-installed-policy.pkla
-share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/etc/skel/dmrc
-share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/mate-panel/panel-default-layout.mate
-share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/schemas/org.mate.terminal.gschema.xml
+share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/etc/default/grub.d/desktopbsd.cfg
+share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/etc/polkit-1/localauthority/10-vendor.d/10-desktopbsd-gnome-installed-policy.pkla
+share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/etc/skel/dmrc
+share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/mate-panel/panel-default-layout.mate
+share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/schemas/org.mate.terminal.gschema.xml
 share/glib-2.0/schemas/92_org.gnome.desktop.screensaver.wallpaper.gschema.override
 share/glib-2.0/schemas/92_org.mate.caja.gschema.override
 share/glib-2.0/schemas/92_org.mate.desktop.background.gschema.override
@@ -12,4 +12,4 @@ share/glib-2.0/schemas/92_org.mate.marco.gschema.override
 share/glib-2.0/schemas/92_org.mate.panel.menubar.gschema.override
 share/glib-2.0/schemas/92_org.mate.peripherals-touchpad.gschema.override
 share/glib-2.0/schemas/92_org.mate.session.gschema.override
-share/mate-background-properties/ghostbsd.xml
+share/mate-background-properties/@DISTRO_SAFE@.xml

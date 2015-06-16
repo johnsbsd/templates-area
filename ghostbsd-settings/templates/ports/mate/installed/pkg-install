@@ -7,24 +7,24 @@ case "$2" in
     fi
     ;;
     POST-INSTALL)
-    # copy dmrc from ghostbsd dir to /usr/share/skel
-    cp -af /usr/local/share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/etc/skel/dmrc /usr/share/skel/dot.dmrc
+    # copy dmrc from @DISTRO_SAFE@ dir to /usr/share/skel
+    cp -af /usr/local/share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/etc/skel/dmrc /usr/share/skel/dot.dmrc
     
     # copy grub config 
     if [ ! -d /usr/local/etc/default ]; then
         mkdir -p /usr/local/etc/default
     fi
-    cp -af /usr/local/share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/etc/default/*   /usr/local/etc/default
+    cp -af /usr/local/share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/etc/default/*   /usr/local/etc/default
     
     #copy local policy 
     if [ ! -d /usr/local/etc/polkit-1 ]; then
         mkdir -p /usr/local/etc/polkit-1
     fi
-    cp -af /usr/local/share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/etc/polkit-1/* /usr/local/etc/polkit-1
+    cp -af /usr/local/share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/etc/polkit-1/* /usr/local/etc/polkit-1
     
     # overrite mate terminal xml for transparency
-    mv /usr/local/share/glib-2.0/schemas/org.mate.terminal.gschema.xml /usr/local/share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/schemas/org.mate.terminal.gschema.xml.old
-    cp -af /usr/local/share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/schemas/org.mate.terminal.gschema.xml /usr/local/share/glib-2.0/schemas
+    mv /usr/local/share/glib-2.0/schemas/org.mate.terminal.gschema.xml /usr/local/share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/schemas/org.mate.terminal.gschema.xml.old
+    cp -af /usr/local/share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/schemas/org.mate.terminal.gschema.xml /usr/local/share/glib-2.0/schemas
     
     # compile schemas
     glib-compile-schemas /usr/local/share/glib-2.0/schemas
@@ -39,40 +39,7 @@ case "$2" in
         mkdir -p /usr/local/share/mate-panel/layouts
     fi
     mv /usr/local/share/mate-panel/layouts/default.layout /usr/local/share/mate-panel/layouts/mate.layout
-    cp -af /usr/local/share/ghostbsd/mate-installed-settings-@CODENAME_SAFE@/mate-panel/panel-default-layout.mate /usr/local/share/mate-panel/layouts/default.layout
-
-    # User gtk-bookmarks.
-    printf "file:///root/Documents Documents
-file:///root/Downloads Downloads
-file:///root/Movies Movies
-file:///root/Music Music
-file:///root/Pictures Pictures
-" > /root/.gtk-bookmarks
-
-    mkdir -p /root/Documents
-    mkdir -p /root/Downloads
-    mkdir -p /root/Movies
-    mkdir -p /root/Music
-    mkdir -p /root/Pictures
-
-    printf "file:///home/@GHOSTBSD_USER@/Documents Documents
-file:///home/@GHOSTBSD_USER@/Downloads Downloads
-file:///home/@GHOSTBSD_USER@/Movies Movies
-file:///home/@GHOSTBSD_USER@/Music Music
-file:///home/@GHOSTBSD_USER@/Pictures Pictures
-" > /home/@GHOSTBSD_USER@/.gtk-bookmarks
-
-    chmod g+rwx /home/@GHOSTBSD_USER@/.gtk-bookmarks
-    mkdir -p /home/@GHOSTBSD_USER@/Documents
-    chmod g+rwx /home/@GHOSTBSD_USER@/Documents
-    mkdir -p /home/@GHOSTBSD_USER@/Downloads
-    chmod g+rwx /home/@GHOSTBSD_USER@/Downloads
-    mkdir -p /home/@GHOSTBSD_USER@/Movies 
-    chmod g+rwx /home/@GHOSTBSD_USER@/Movies
-    mkdir -p /home/@GHOSTBSD_USER@/Music
-    chmod g+rwx /home/@GHOSTBSD_USER@/Music
-    mkdir -p /home/@GHOSTBSD_USER@/Pictures
-    chmod g+rwx /home/@GHOSTBSD_USER@/Pictures
+    cp -af /usr/local/share/@DISTRO_SAFE@/mate-installed-settings-@CODENAME_SAFE@/mate-panel/panel-default-layout.mate /usr/local/share/mate-panel/layouts/default.layout
     ;;
 esac
 
