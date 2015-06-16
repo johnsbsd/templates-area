@@ -5,7 +5,7 @@
 # $FreeBSD$
 #
 
-PORTNAME= 	gnome-live-settings-Karine
+PORTNAME= 	gnome-live-settings
 PORTVERSION=	1.0
 CATEGORIES=	x11
 

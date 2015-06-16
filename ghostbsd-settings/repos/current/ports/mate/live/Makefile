@@ -5,7 +5,7 @@
 # $FreeBSD$
 #
 
-PORTNAME= 	mate-live-settings-Karine
+PORTNAME= 	mate-live-settings
 PORTVERSION=	1.0
 CATEGORIES=	x11
 

@@ -4,27 +4,27 @@ bin/xdrivers
 etc/PolicyKit/PolicyKit.conf
 etc/polkit-1/localauthority/50-local.d/org.freedesktop.consolekit.pkla
 etc/xdg/autostart/desktopsound.desktop
-share/ghostbsd/common-installed-settings-Karine/base/override/COPYRIGHT
-share/ghostbsd/common-installed-settings-Karine/base/override/boot/beastie.4th
-share/ghostbsd/common-installed-settings-Karine/base/override/boot/brand.4th
-share/ghostbsd/common-installed-settings-Karine/base/override/boot/loader.conf
-share/ghostbsd/common-installed-settings-Karine/base/override/boot/menu-commands.4th
-share/ghostbsd/common-installed-settings-Karine/base/override/boot/menu.4th
-share/ghostbsd/common-installed-settings-Karine/base/override/boot/splash.pcx
-share/ghostbsd/common-installed-settings-Karine/base/override/etc/devfs.conf
-share/ghostbsd/common-installed-settings-Karine/base/override/etc/devfs.rules
-share/ghostbsd/common-installed-settings-Karine/base/override/etc/gettytab
-share/ghostbsd/common-installed-settings-Karine/base/override/etc/motd
-share/ghostbsd/common-installed-settings-Karine/base/patches/devd.conf.extra
-share/ghostbsd/common-installed-settings-Karine/base/patches/make.conf.extra
-share/ghostbsd/common-installed-settings-Karine/base/patches/rc.conf.extra
-share/ghostbsd/common-installed-settings-Karine/base/patches/sysctl.conf.extra
-share/ghostbsd/common-installed-settings-Karine/packages/override/applications/SpiderOak.desktop
-share/ghostbsd/common-installed-settings-Karine/packages/override/applications/mc.desktop
-share/ghostbsd/common-installed-settings-Karine/packages/override/etc/X11/xorg.conf.orig
-share/ghostbsd/common-installed-settings-Karine/packages/override/etc/X11/xorg.conf.vbox
+share/ghostbsd/common-installed-settings/base/override/COPYRIGHT
+share/ghostbsd/common-installed-settings/base/override/boot/beastie.4th
+share/ghostbsd/common-installed-settings/base/override/boot/brand.4th
+share/ghostbsd/common-installed-settings/base/override/boot/loader.conf
+share/ghostbsd/common-installed-settings/base/override/boot/menu-commands.4th
+share/ghostbsd/common-installed-settings/base/override/boot/menu.4th
+share/ghostbsd/common-installed-settings/base/override/boot/splash.pcx
+share/ghostbsd/common-installed-settings/base/override/etc/devfs.conf
+share/ghostbsd/common-installed-settings/base/override/etc/devfs.rules
+share/ghostbsd/common-installed-settings/base/override/etc/gettytab
+share/ghostbsd/common-installed-settings/base/override/etc/motd
+share/ghostbsd/common-installed-settings/base/patches/devd.conf.extra
+share/ghostbsd/common-installed-settings/base/patches/make.conf.extra
+share/ghostbsd/common-installed-settings/base/patches/rc.conf.extra
+share/ghostbsd/common-installed-settings/base/patches/sysctl.conf.extra
+share/ghostbsd/common-installed-settings/packages/override/applications/SpiderOak.desktop
+share/ghostbsd/common-installed-settings/packages/override/applications/mc.desktop
+share/ghostbsd/common-installed-settings/packages/override/etc/X11/xorg.conf.orig
+share/ghostbsd/common-installed-settings/packages/override/etc/X11/xorg.conf.vbox
 share/sounds/ghostbsd/desktop-login.ogg
-@dir share/ghostbsd/common-installed-settings-Karine/base/backup/boot
-@dir share/ghostbsd/common-installed-settings-Karine/base/backup/etc
-@dir share/ghostbsd/common-installed-settings-Karine/packages/backup/applications
-@dir share/ghostbsd/common-installed-settings-Karine/packages/backup/etc/X11
+@dir share/ghostbsd/common-installed-settings/base/backup/boot
+@dir share/ghostbsd/common-installed-settings/base/backup/etc
+@dir share/ghostbsd/common-installed-settings/packages/backup/applications
+@dir share/ghostbsd/common-installed-settings/packages/backup/etc/X11

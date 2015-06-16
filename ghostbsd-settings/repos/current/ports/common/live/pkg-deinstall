@@ -3,7 +3,7 @@
 restore_freebsd()
 {
     # restore from backup original freebsd files
-    cp -af /usr/local/share/ghostbsd/common-live-settings-Karine/base/backup/* /
+    cp -af /usr/local/share/ghostbsd/common-live-settings/base/backup/* /
 }
 
 restore_packages_settings()
@@ -19,7 +19,7 @@ restore_packages_settings()
 
 remove_files_from()
 {
-    for files in $(ls -l /usr/local/share/ghostbsd/common-live-settings-Karine/etc/rc.d); do
+    for files in $(ls -l /usr/local/share/ghostbsd/common-live-settings/etc/rc.d); do
         rm -f /etc/rc.d/$files
     done
 }
@@ -31,8 +31,8 @@ case $2 in
     remove_files_from
     ;;
     POST-DEINSTALL)
-    #rm -Rf /usr/local/share/ghostbsd/common-live-settings-Karine/
-    echo "ghostbsd-live-common-settings-Karine was uninstalled."
+    #rm -Rf /usr/local/share/ghostbsd/common-live-settings/
+    echo "ghostbsd-live-common-settings was uninstalled."
     ;;
     *)
     echo $2

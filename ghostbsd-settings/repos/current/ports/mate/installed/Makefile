@@ -5,7 +5,7 @@
 # $FreeBSD$
 #
 
-PORTNAME= 	mate-installed-settings-Karine
+PORTNAME= 	mate-installed-settings
 PORTVERSION=	1.0
 CATEGORIES=	x11
 
@@ -22,8 +22,8 @@ RUN_DEPENDS=	glib-compile-schemas:${PORTSDIR}/devel/glib-2.0 \
 NO_BUILD=	yes
 
 do-install:
-	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd/mate-installed-settings-Karine
-	@${CP} -R   ${WRKSRC}/ghostbsd/* ${STAGEDIR}/${PREFIX}/share/ghostbsd/mate-installed-settings-Karine
+	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd/mate-installed-settings
+	@${CP} -R   ${WRKSRC}/ghostbsd/* ${STAGEDIR}/${PREFIX}/share/ghostbsd/mate-installed-settings
 	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/mate-background-properties
 	@${CP} ${WRKSRC}/mate-background-properties/ghostbsd.xml ${STAGEDIR}/${PREFIX}/share/mate-background-properties
 	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/glib-2.0/schemas

@@ -5,7 +5,7 @@
 # $FreeBSD$
 #
 
-PORTNAME= 	gnome-installed-settings-Karine
+PORTNAME= 	gnome-installed-settings
 PORTVERSION=	1.0
 CATEGORIES=	x11
 
@@ -22,8 +22,8 @@ RUN_DEPENDS=	glib-compile-schemas:${PORTSDIR}/devel/glib-2.0 \
 NO_BUILD=	yes
 
 do-install:
-	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd/gnome-installed-settings-Karine
-	@${CP} -R   ${WRKSRC}/ghostbsd/* ${STAGEDIR}/${PREFIX}/share/ghostbsd/gnome-installed-settings-Karine
+	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd/gnome-installed-settings
+	@${CP} -R   ${WRKSRC}/ghostbsd/* ${STAGEDIR}/${PREFIX}/share/ghostbsd/gnome-installed-settings
 	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/gnome-background-properties
 	@${CP} ${WRKSRC}/gnome-background-properties/ghostbsd.xml ${STAGEDIR}/${PREFIX}/share/gnome-background-properties
 	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/glib-2.0/schemas

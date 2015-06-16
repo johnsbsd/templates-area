@@ -5,7 +5,7 @@
 # $FreeBSD$
 #
 
-PORTNAME= 	ghostbsd-installed-common-settings-Karine
+PORTNAME= 	ghostbsd-installed-common-settings
 PORTVERSION=	1.0
 CATEGORIES=	x11
 
@@ -22,10 +22,10 @@ RUN_DEPENDS= dpkg:${PORTSDIR}/archivers/dpkg
 do-install:
 	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd
 	@${CP} -R   ${WRKSRC}/ghostbsd/* ${STAGEDIR}/${PREFIX}/share/ghostbsd
-	@${RM} -f ${STAGEDIR}/${PREFIX}/share/ghostbsd/common-installed-settings-Karine/base/backup/boot/.gitignore
-	@${RM} -f ${STAGEDIR}/${PREFIX}/share/ghostbsd/common-installed-settings-Karine/base/backup/etc/.gitignore
-	@${RM} -f ${STAGEDIR}/${PREFIX}/share/ghostbsd/common-installed-settings-Karine/packages/backup/applications/.gitignore
-	@${RM} -f ${STAGEDIR}/${PREFIX}/share/ghostbsd/common-installed-settings-Karine/packages/backup/etc/X11/.gitignore
+	@${RM} -f ${STAGEDIR}/${PREFIX}/share/ghostbsd/common-installed-settings/base/backup/boot/.gitignore
+	@${RM} -f ${STAGEDIR}/${PREFIX}/share/ghostbsd/common-installed-settings/base/backup/etc/.gitignore
+	@${RM} -f ${STAGEDIR}/${PREFIX}/share/ghostbsd/common-installed-settings/packages/backup/applications/.gitignore
+	@${RM} -f ${STAGEDIR}/${PREFIX}/share/ghostbsd/common-installed-settings/packages/backup/etc/X11/.gitignore
 	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/sounds
 	@${CP} -R   ${WRKSRC}/usr/local/* ${STAGEDIR}/${PREFIX}
 .include <bsd.port.mk>

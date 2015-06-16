@@ -3,16 +3,16 @@
 backup_freebsd()
 {
     # backup files from etc
-    for tocopy in $(ls /usr/local/share/ghostbsd/common-live-settings-Karine/base/override/etc/rc.d) ; do
+    for tocopy in $(ls /usr/local/share/ghostbsd/common-live-settings/base/override/etc/rc.d) ; do
        if [ -f /etc/rc.d/$tocopy ]; then
-            cp -af /etc/rc.d/$tocopy /usr/local/share/ghostbsd/common-live-settings-Karine/base/backup/etc/rc.d/
+            cp -af /etc/rc.d/$tocopy /usr/local/share/ghostbsd/common-live-settings/base/backup/etc/rc.d/
         fi
     done
 }
 
 freebsd_overrides()
 {
-    cp -af /usr/local/share/ghostbsd/common-live-settings-Karine/base/override/* /
+    cp -af /usr/local/share/ghostbsd/common-live-settings/base/override/* /
 }
 
 
@@ -43,7 +43,7 @@ packages_settings()
 
 copy_files_in()
 {
-    cp -af /usr/local/share/ghostbsd/common-live-settings-Karine/etc/* /etc
+    cp -af /usr/local/share/ghostbsd/common-live-settings/etc/* /etc
 }
 
 case "$2" in

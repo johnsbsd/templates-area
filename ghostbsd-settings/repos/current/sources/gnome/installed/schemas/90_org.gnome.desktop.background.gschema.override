@@ -1,4 +1,4 @@
 [org.gnome.desktop.background]
-picture-uri='file:///'
+picture-uri='file:///usr/local/share/backgrounds/ghostbsd/GreenLeaf.jpg'
 picture-options='stretched'
 show-desktop-icons=true

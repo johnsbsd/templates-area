@@ -5,7 +5,7 @@
 # $FreeBSD$
 #
 
-PORTNAME= 	ghostbsd-live-common-settings-Karine
+PORTNAME= 	ghostbsd-live-common-settings
 PORTVERSION=	1.0
 CATEGORIES=	x11
 

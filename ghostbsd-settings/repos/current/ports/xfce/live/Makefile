@@ -5,7 +5,7 @@
 # $FreeBSD$
 #
 
-PORTNAME= 	xfce-live-settings-Karine
+PORTNAME= 	xfce-live-settings
 PORTVERSION=	1.0
 CATEGORIES=	x11
 
@@ -19,6 +19,6 @@ GH_ACCOUNT=	GhostBSD
 NO_BUILD=	yes
 
 do-install:
-	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd/xfce-live-settings-Karine
-	@${CP} -R   ${WRKSRC}/* ${STAGEDIR}/${PREFIX}/share/ghostbsd/xfce-live-settings-Karine
+	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd/xfce-live-settings
+	@${CP} -R   ${WRKSRC}/* ${STAGEDIR}/${PREFIX}/share/ghostbsd/xfce-live-settings
 .include <bsd.port.mk>
