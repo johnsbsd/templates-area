@@ -3,37 +3,37 @@
 backup_freebsd()
 {
     # backup old files from FreeBSD base system
-    for tocopy in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/override/boot) ; do
+    for tocopy in $(ls /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/override/boot) ; do
        if [ -f /boot/$tocopy ]; then
-            cp -af /boot/$tocopy /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/boot/
+            cp -af /boot/$tocopy /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/backup/boot/
         fi
     done
     # backup COPYRIGHT
-    cp -af /COPYRIGHT /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/
+    cp -af /COPYRIGHT /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/backup/
 
     # backup files from etc
-    for tocopy in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/override/etc)     ; do
+    for tocopy in $(ls /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/override/etc)     ; do
        if [ -f /etc/$tocopy ]; then
-            cp -af /etc/$tocopy /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/etc/
+            cp -af /etc/$tocopy /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/backup/etc/
         fi
     done
-    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches | cut -d . -f1,2) ; do
+    for files in $(ls /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/patches | cut -d . -f1,2) ; do
         if [ -f /etc/$files ]; then
-            cp -af /etc/$files /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/backup/etc/
+            cp -af /etc/$files /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/backup/etc/
         fi
     done
     
     # backup desktop files that will be override
-    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/override/applications) ; do
+    for files in $(ls /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/packages/override/applications) ; do
         if [ -f /usr/local/share/applications/$files ]; then
-            cp -af  /usr/local/share/applications/$files /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/backup/applications
+            cp -af  /usr/local/share/applications/$files /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/packages/backup/applications
         fi
     done
 
     # backup desktop files that will be override
-    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/override/etc/X11) ; do
+    for files in $(ls /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/packages/override/etc/X11) ; do
         if [ -f /etc/X11/$files ]; then
-            cp -af  /etc/X11/$files /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/backup/etc/X11
+            cp -af  /etc/X11/$files /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/packages/backup/etc/X11
         fi
     done
 
@@ -41,28 +41,28 @@ backup_freebsd()
 
 freebsd_overrides()
 {
-    cp -af /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/override/* /
+    cp -af /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/override/* /
 }
 
 packages_overrides()
 {
-    cp -af /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/override/etc/* /etc
-    cp -af /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/packages/override/applications/* \
+    cp -af /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/packages/override/etc/* /etc
+    cp -af /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/packages/override/applications/* \
     /usr/local/share/applications
 }
 
 patch_etc_files()
 {
-    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches | cut -d . -f1,2 |grep -v devd.conf | grep -v sysctl.conf) ; do
-        cat /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches/$files.extra >> /etc/$files
+    for files in $(ls /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/patches | cut -d . -f1,2 |grep -v devd.conf | grep -v sysctl.conf) ; do
+        cat /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/patches/$files.extra >> /etc/$files
     done
 
     if [ -z "$(cat /etc/devd.conf| grep ugen[0-9])" ] ; then
-         cat /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches/devd.conf.extra >> /etc/devd.conf
+         cat /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/patches/devd.conf.extra >> /etc/devd.conf
     fi
 
     if [ -z "$(cat /etc/sysctl.conf| grep vfs.usermount)" ] ; then
-         cat /usr/local/share/ghostbsd/common-installed-settings-@CODENAME_SAFE@/base/patches/sysctl.conf.extra >> /etc/sysctl.conf
+         cat /usr/local/share/@DISTRO_SAFE@/common-installed-settings-@CODENAME_SAFE@/base/patches/sysctl.conf.extra >> /etc/sysctl.conf
     fi
 
 }
@@ -75,17 +75,19 @@ packages_settings()
     fi
 }
 
-userhome_settings()
+root_gtk_bookmarks()
 {
- # Put ghostbsd-irc to desktop
-    if [ ! d /home/@GHOSTBSD_USER@/Desktop ]; then
-        mkdir -p /home/@GHOSTBSD_USER@/Desktop
-    fi
-    
-    if [ -f /usr/local/share/applications/ghostbsd-irc.desktop ]; then
-        cp /usr/local/share/applications/ghostbsd-irc.desktop /home/@GHOSTBSD_USER@/Desktop 
-    fi
-    chmod g+rwx /home/@GHOSTBSD_USER@/Desktop/ghostbsd-irc.desktop
+    printf "file:///root/Documents Documents
+file:///root/Downloads Downloads
+file:///root/Movies Movies
+file:///root/Music Music
+file:///root/Pictures Pictures " > /root/.gtk-bookmarks
+
+    mkdir -p /root/Documents
+    mkdir -p /root/Downloads
+    mkdir -p /root/Movies
+    mkdir -p /root/Music
+    mkdir -p /root/Pictures
 }
 
 case "$2" in
@@ -100,8 +102,8 @@ case "$2" in
     patch_etc_files
     # apply packages settings
     packages_settings
-    # apply settings in userhome
-    userhome_settings
+    # creates root .gtk_bookmarks
+    root_gtk_bookmarks
     ;;
     *)
     ;;

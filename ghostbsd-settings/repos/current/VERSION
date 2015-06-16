@@ -9,6 +9,7 @@ ORGANIZATION=GhostBSD
 
 GTK_THEME=Ghomix
 MATE_ICONSET=Vibrancy-Aqua-Dark
+XFCE_ICONSET=Vibrancy-Aqua-Dark
 
 # KDM theme
 USE_THEME=true

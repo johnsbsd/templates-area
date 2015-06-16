@@ -252,10 +252,11 @@ sed -i "" "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
 
 
 # sources /xfce/installed/etc/xdg/xfce4/xfconf/
-for i in xfce4-desktop.xml xfce4-panel.xml  ; do
+for i in xfce4-desktop.xml xfce4-panel.xml xsettings.xml  ; do
 sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
     -e "s/\@WALLPAPER\@/${WALLPAPER}/g" \
-    -e "s/\@GTK_YHEME\@/${GTK_THEME}/g" \
+    -e "s/\@GTK_THEME\@/${GTK_THEME}/g" \
+    -e "s/\@XFCE_ICONSET\@/${XFCE_ICONSET}/g" \
     ../../templates/sources/xfce/installed/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/$i \
     > sources/xfce/installed/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/$i
 

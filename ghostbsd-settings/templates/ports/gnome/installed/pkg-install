@@ -29,39 +29,6 @@ case "$2" in
     if [ -e /usr/local/bin/gnome-terminal ] ; then
         update-alternatives --altdir /usr/local/etc/alternatives --install /usr/local/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/gnome-terminal 50
     fi
-
-    # User gtk-bookmarks.
-    printf "file:///root/Documents Documents
-file:///root/Downloads Downloads
-file:///root/Movies Movies
-file:///root/Music Music
-file:///root/Pictures Pictures
-" > /root/.gtk-bookmarks
-
-    mkdir -p /root/Documents
-    mkdir -p /root/Downloads
-    mkdir -p /root/Movies
-    mkdir -p /root/Music
-    mkdir -p /root/Pictures
-
-    printf "file:///home/@GHOSTBSD_USER@/Documents Documents
-file:///home/@GHOSTBSD_USER@/Downloads Downloads
-file:///home/@GHOSTBSD_USER@/Movies Movies
-file:///home/@GHOSTBSD_USER@/Music Music
-file:///home/@GHOSTBSD_USER@/Pictures Pictures
-" > /home/@GHOSTBSD_USER@/.gtk-bookmarks
-
-    chmod g+rwx /home/@GHOSTBSD_USER@/.gtk-bookmarks
-    mkdir -p /home/@GHOSTBSD_USER@/Documents
-    chmod g+rwx /home/@GHOSTBSD_USER@/Documents
-    mkdir -p /home/@GHOSTBSD_USER@/Downloads
-    chmod g+rwx /home/@GHOSTBSD_USER@/Downloads
-    mkdir -p /home/@GHOSTBSD_USER@/Movies 
-    chmod g+rwx /home/@GHOSTBSD_USER@/Movies
-    mkdir -p /home/@GHOSTBSD_USER@/Music
-    chmod g+rwx /home/@GHOSTBSD_USER@/Music
-    mkdir -p /home/@GHOSTBSD_USER@/Pictures
-    chmod g+rwx /home/@GHOSTBSD_USER@/Pictures
     ;;
 esac
 
