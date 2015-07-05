@@ -147,6 +147,19 @@ sed     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
 done
 
 
+
+### COMMON ####
+#================
+# sources/common/live/etc/rc.d/unionfs
+
+for i in $(ls sources/common/live/${DISTRO_SAFE}/common-live-settings-${CODENAME_SAFE}/etc/rc.d) ; do
+sed -i '' "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+     sources/common/live/${DISTRO_SAFE}/common-live-settings-${CODENAME_SAFE}/etc/rc.d/$i
+done
+#sources/common/live/config-live-settings
+sed -i '' "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+     sources/common/live/${DISTRO_SAFE}/common-live-settings-${CODENAME_SAFE}/config-live-settings
+
 ### MATE ####
 #================
 # sources/mate/installed/schemas
@@ -284,6 +297,10 @@ done
 #=================
 
 if [ "${CODENAME_SAFE}" == "null" ]; then
+
+# common
+ mv -f $(find ./sources/ -type d -name common-installed-settings-null) $(find ./sources/ -type d -name common-installed-settings-null| sed -e "s/-null//g")
+ mv -f $(find ./sources/ -type d -name common-live-settings-null) $(find ./sources/ -type d -name common-live-settings-null| sed -e "s/-null//g")
 
 # ports
 for i in $(find ports -type f -name pkg-install ) ; do

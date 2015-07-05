@@ -1,4 +1,5 @@
 share/@DISTRO_SAFE@/common-live-settings-@CODENAME_SAFE@/base/backup/etc/rc.d/mountcritlocal
 share/@DISTRO_SAFE@/common-live-settings-@CODENAME_SAFE@/base/override/etc/rc.d/mountcritlocal
 share/@DISTRO_SAFE@/common-live-settings-@CODENAME_SAFE@/etc/rc.d/unionfs
+share/@DISTRO_SAFE@/common-live-settings-@CODENAME_SAFE@/config-live-settings
 share/@DISTRO_SAFE@/common-live-settings-@CODENAME_SAFE@/etc/rc.d/uzip

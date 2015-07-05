@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # $GhostBSD$
-# $Id: uzip,v 1.3 Thursday, August 16 2012 22:21 Eric Turgeon Exp $
+# $Id: uzip,v 1.4 Saturday, June 20 2015 12:18 Angelescu Ovidiu Exp $
 #
 
 # PROVIDE: uzip
@@ -15,9 +15,9 @@ start_cmd="uzip_start"
 stop_cmd="uzip_stop"
 
 uzip_start() {
-  for loopfs in /uzip/*.uzip; do
+  for loopfs in /dist/uzip/*.uzip; do
     if [ -f ${loopfs} ]; then
-      filename=${loopfs#/uzip/}
+      filename=${loopfs#/dist/uzip/}
       mountpoint=/${filename%.uzip}
       device=/dev/$(mdconfig -a -t vnode -o readonly -f $loopfs)
       sleep 1
