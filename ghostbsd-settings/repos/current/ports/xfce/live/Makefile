@@ -5,20 +5,20 @@
 # $FreeBSD$
 #
 
-PORTNAME= 	xfce-live-settings
+PORTNAME= 	xfce-live-settings-desktopbsd
 PORTVERSION=	1.0
 CATEGORIES=	x11
 
 MAINTAINER=	angelescuo@yahoo.com
-COMMENT=	GhostBSD xfce settings in live mode
+COMMENT=	DesktopBSD xfce settings in live mode
 LICENSE =	BSD
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	GhostBSD
+GH_ACCOUNT=	DesktopBSD
 
 NO_BUILD=	yes
 
 do-install:
-	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/ghostbsd/xfce-live-settings
-	@${CP} -R   ${WRKSRC}/* ${STAGEDIR}/${PREFIX}/share/ghostbsd/xfce-live-settings
+	@${MKDIR} -p ${STAGEDIR}/${PREFIX}/share/desktopbsd/xfce-live-settings-desktopbsd
+	@${CP} -R   ${WRKSRC}/* ${STAGEDIR}/${PREFIX}/share/desktopbsd/xfce-live-settings-desktopbsd
 .include <bsd.port.mk>

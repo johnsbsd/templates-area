@@ -1,0 +1,14 @@
+desc = """
+zBSD common ports
+"""
+
+packages = """
+ssft
+zbsd-bug-report
+zbsd-irc
+inxi
+networkmgr
+"""
+
+settings="""
+"""

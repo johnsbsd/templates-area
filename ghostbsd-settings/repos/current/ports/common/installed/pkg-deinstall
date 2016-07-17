@@ -3,24 +3,24 @@
 restore_freebsd()
 {
     # restore from backup original freebsd files
-    cp -af /usr/local/share/ghostbsd/common-installed-settings/base/backup/* /
+    cp -af /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/backup/* /
 
-    if [ ! -f /usr/local/share/ghostbsd/common-installed-settings/base/backup/boot/splash.pcx ]; then
+    if [ ! -f /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/backup/boot/splash.pcx ]; then
         rm -f /boot/splash.pcx
     fi
 
     for files in rc.local make.conf devfs.rules ; do
-        if [ ! -f /usr/local/share/ghostbsd/common-installed-settings/base/backup/etc/$files ]; then
+        if [ ! -f /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/backup/etc/$files ]; then
             rm -f /etc/$files
         fi
     done
 
     # restore from original packages files
-    if [ -d /usr/local/share/ghostbsd/common-installed-settings/packages/backup/etc ] ; then
-        cp -af /usr/local/share/ghostbsd/common-installed-settings/packages/backup/etc/* /etc
+    if [ -d /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/backup/etc ] ; then
+        cp -af /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/backup/etc/* /etc
     fi
-    if [ -d /usr/local/share/ghostbsd/common-installed-settings/packages/backup/applications ];then
-        cp -af /usr/local/share/ghostbsd/common-installed-settings/packages/backup/applications/* \
+    if [ -d /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/backup/applications ];then
+        cp -af /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/backup/applications/* \
     /usr/local/share/applications
     fi
 }
@@ -28,7 +28,7 @@ restore_freebsd()
 rem_filesfrom_freebsd()
 {
     # removes X config files
-    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings/packages/override/etc/X11 ) ; do
+    for files in $(ls /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/override/etc/X11 ) ; do
         rm -f /etc/X11/$files
     done
 }
@@ -46,8 +46,8 @@ case $2 in
     restore_packages_settings
     ;;
     POST-DEINSTALL)
-    #rm -Rf /usr/local/share/ghostbsd/common-installed-settings/
-    echo "ghostbsd-installed-common-settings was uninstalled."
+    #rm -Rf /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/
+    echo "desktopbsd-installed-common-settings was uninstalled."
     ;;
     *)
     echo $2

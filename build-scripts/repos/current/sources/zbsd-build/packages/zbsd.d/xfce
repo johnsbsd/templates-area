@@ -1,0 +1,11 @@
+desc = """
+zBSD xfce settings
+"""
+
+packages = """
+xfce-installed-settings
+xfce-live-settings
+"""
+
+settings="""
+"""

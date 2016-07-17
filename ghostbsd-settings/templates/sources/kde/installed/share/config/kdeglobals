@@ -1,0 +1,41 @@
+[Appmenu Style]
+Style=InApplication
+
+[DesktopIcons]
+Size=32
+
+[General]
+ColorScheme=@DISTRO@
+XftAntialias=true
+XftHintStyle=hintmedium
+XftSubPixel=rgb
+activeFont=Droid Sans,9,-1,5,50,0,0,0,0,0
+desktopFont=Droid Sans,9,-1,5,50,0,0,0,0,0
+fixed=Droid Sans Mono,9,-1,5,50,0,0,0,0,0
+font=Droid Sans,9,-1,5,50,0,0,0,0,0
+menuFont=Droid Sans,9,-1,5,50,0,0,0,0,0
+shadeSortColumn=true
+smallestReadableFont=Droid Sans,8,-1,5,50,0,0,0,0,0
+taskbarFont=Droid Sans,9,-1,5,50,0,0,0,0,0
+toolBarFont=Droid Sans,8,-1,5,50,0,0,0,0,0
+widgetStyle=oxygen
+BrowserApplication=xdg-browser-launcher.desktop
+
+[KDE]
+ChangeCursor=true
+ShowIconsInMenuItems=true
+ShowIconsOnPushButtons=true
+contrast=7
+
+[KDE-Global GUI Settings]
+GraphicEffectsLevel=3
+
+[KFileDialog Settings]
+Breadcrumb Navigation=true
+
+[Toolbar style]
+ToolButtonStyle=TextBesideIcon
+ToolButtonStyleOtherToolbars=TextBesideIcon
+
+[PreviewSettings]
+UseFileThumbnails=true

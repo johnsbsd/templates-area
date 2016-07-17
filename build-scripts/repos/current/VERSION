@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DISTRO=zBSD
+DISTRO_MAJOR=ZBSD
+DISTRO_USER=zbsd
+DISTRO_SAFE=zbsd
+ORGANIZATION=zBSD
+
+# USER for 10-live-cd.pkla
+DISTRO_USER=zetabsd

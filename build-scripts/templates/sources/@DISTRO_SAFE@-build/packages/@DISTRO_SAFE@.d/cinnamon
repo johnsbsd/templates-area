@@ -1,0 +1,11 @@
+desc = """
+@DISTRO@ cinnamon settings
+"""
+
+packages = """
+cinnamon-installed-settings
+cinnamon-live-settings
+"""
+
+settings="""
+"""

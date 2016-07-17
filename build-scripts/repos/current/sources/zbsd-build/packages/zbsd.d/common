@@ -1,0 +1,12 @@
+desc = """
+zBSD common settings
+"""
+
+packages = """
+zbsd-grub2-settings
+zbsd-installed-common-settings
+zbsd-live-common-settings
+"""
+
+settings="""
+"""

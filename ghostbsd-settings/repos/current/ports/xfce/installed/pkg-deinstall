@@ -9,7 +9,7 @@
     rm -f  /usr/share/skel/dot.gtkrc-2.0
     
     # removes grub config 
-    rm -f /usr/local/etc/default/grub.d/ghostbsd.cfg
+    rm -f /usr/local/etc/default/grub.d/desktopbsd.cfg
 
     # removes files from xdg
     for i in Terminal Thunar orage xfce4 ;do

@@ -1,0 +1,14 @@
+desc = """
+@DISTRO@ common ports
+"""
+
+packages = """
+ssft
+@DISTRO_SAFE@-bug-report
+@DISTRO_SAFE@-irc
+inxi
+networkmgr
+"""
+
+settings="""
+"""

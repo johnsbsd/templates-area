@@ -5,16 +5,16 @@
 # $FreeBSD$
 #
 
-PORTNAME= 	cinnamon-live-settings
+PORTNAME= 	cinnamon-live-settings-desktopbsd
 PORTVERSION=	1.0
 CATEGORIES=	x11
 
 MAINTAINER=	angelescuo@yahoo.com
-COMMENT=	GhostBSD cinnamon settings in live mode
+COMMENT=	DesktopBSD cinnamon settings in live mode
 LICENSE =	BSD
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	GhostBSD
+GH_ACCOUNT=	DesktopBSD
 
 RUN_DEPENDS=	glib-compile-schemas:${PORTSDIR}/devel/glib-2.0
 

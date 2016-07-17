@@ -3,16 +3,16 @@
 backup_freebsd()
 {
     # backup files from etc
-    for tocopy in $(ls /usr/local/share/ghostbsd/common-live-settings/base/override/etc/rc.d) ; do
+    for tocopy in $(ls /usr/local/share/ghostbsd/common-live-settings-desktopbsd/base/override/etc/rc.d) ; do
        if [ -f /etc/rc.d/$tocopy ]; then
-            cp -af /etc/rc.d/$tocopy /usr/local/share/ghostbsd/common-live-settings/base/backup/etc/rc.d/
+            cp -af /etc/rc.d/$tocopy /usr/local/share/ghostbsd/common-live-settings-desktopbsd/base/backup/etc/rc.d/
         fi
     done
 }
 
 freebsd_overrides()
 {
-    cp -af /usr/local/share/ghostbsd/common-live-settings/base/override/* /
+    cp -af /usr/local/share/ghostbsd/common-live-settings-desktopbsd/base/override/* /
 }
 
 
@@ -26,8 +26,8 @@ packages_settings()
     fi
 
     # Setting installer
-    if [ ! -d /home/ghostbsd/Desktop ]; then
-        mkdir -p /home/ghostbsd/Desktop
+    if [ ! -d /home/@GHOSTBSD_USER@/Desktop ]; then
+        mkdir -p /home/@GHOSTBSD_USER@/Desktop
     fi
 
     if [ -f /usr/local/share/applications/gbi.desktop ]; then
@@ -35,15 +35,15 @@ packages_settings()
         rm -rf /usr/sbin/pc-sysinstall
         rm -rf /usr/share/pc-sysinstall
         #put the installer on the desktop
-        cp -pf /usr/local/share/applications/gbi.desktop /home/ghostbsd/Desktop/
-        chown -R 1000:0 /home/ghostbsd/Desktop/gbi.desktop
+        cp -pf /usr/local/share/applications/gbi.desktop /home/@GHOSTBSD_USER@/Desktop/
+        chown -R 1000:0 /home/@GHOSTBSD_USER@/Desktop/gbi.desktop
     fi
 
 }
 
 copy_files_in()
 {
-    cp -af /usr/local/share/ghostbsd/common-live-settings/etc/* /etc
+    cp -af /usr/local/share/ghostbsd/common-live-settings-desktopbsd/etc/* /etc
 }
 
 case "$2" in

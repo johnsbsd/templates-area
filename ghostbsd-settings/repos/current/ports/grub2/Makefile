@@ -14,7 +14,7 @@ COMMENT=	@DISTRO@ grub2 settings
 LICENSE =	BSD
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	GhostBSD
+GH_ACCOUNT=	DesktopBSD
 
 RUN_DEPENDS=	glib-compile-schemas:${PORTSDIR}/devel/glib-2.0
 

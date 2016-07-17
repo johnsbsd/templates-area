@@ -1,0 +1,27 @@
+#!/bin/sh
+
+case "$2" in
+    POST-INSTALL)
+    # copy dmrc from @DISTRO_SAFE@ dir to /usr/share/skel
+    cp -af /usr/local/share/@DISTRO_SAFE@/kde-installed-settings-@CODENAME_SAFE@/etc/skel/dmrc /usr/share/skel/dot.dmrc
+    
+    # copy grub config 
+    if [ ! -d /usr/local/etc/default ]; then
+        mkdir -p /usr/local/etc/default
+    fi
+    cp -af /usr/local/share/@DISTRO_SAFE@/kde-installed-settings-@CODENAME_SAFE@/etc/default/*   /usr/local/etc/default
+    
+    #copy local policy 
+    if [ ! -d /usr/local/etc/polkit-1 ]; then
+        mkdir -p /usr/local/etc/polkit-1
+    fi
+    cp -af /usr/local/share/@DISTRO_SAFE@/kde-installed-settings-@CODENAME_SAFE@/etc/polkit-1/* /usr/local/etc/polkit-1
+    
+    # set x-terminal-emulator alternative for gksu
+    if [ -e /usr/local/bin/konsole ] ; then
+        update-alternatives --altdir /usr/local/etc/alternatives --install /usr/local/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/konsole 50
+    fi
+    ;;
+esac
+
+exit 0

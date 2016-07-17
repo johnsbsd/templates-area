@@ -1,11 +1,11 @@
 #!/bin/bash
 
-WALLPAPER=GreenLeaf
-CODENAME_SAFE=null
-DISTRO=GhostBSD
-DISTRO_SAFE=ghostbsd
+WALLPAPER=desktopbsd
+CODENAME_SAFE=desktopbsd
+DISTRO=DesktopBSD
+DISTRO_SAFE=desktopbsd
 PORT_VERSION=1.0
-ORGANIZATION=GhostBSD
+ORGANIZATION=DesktopBSD
 
 GTK_THEME=Ghomix
 MATE_ICONSET=Vibrancy-Aqua-Dark
@@ -13,7 +13,7 @@ XFCE_ICONSET=Vibrancy-Aqua-Dark
 
 # KDM theme
 USE_THEME=true
-KDE_THEME=whiteroom
+KDE_THEME=DesktopBSD
 
 # USER for 10-live-cd.pkla
-GHOSTBSD_USER=ghostbsd
+DISTRO_USER=desktopbsd

@@ -1,0 +1,61 @@
+desc = """
+    DesktopBSD GNOME desktop environment
+"""
+
+packages = """
+    baobab
+    cups-pk-helper
+    dconf-editor
+    eog
+    evince
+    file-roller
+    gconf-editor
+    gedit
+    gengetopt
+    gnome-backgrounds
+    gnome-calculator
+    gnome-control-center
+    gnome-dictionary
+    # metapackage gnome-games depends: 
+      five-or-more
+      four-in-a-row
+      gnome-chess 
+      gnome-nibbles
+      gnome-robots
+      gnome-sudoku
+      gnome-mines
+      gnome-tetravex
+      gnome-klotski
+      tali
+      iagno
+      lightsoff
+      gnome-mahjongg
+      quadrapassel
+      swell-foop
+      # recommends:
+      aisleriot
+      # suggests:
+    gnome-keyring
+    gnome-mount
+    gnome-online-accounts
+    gnome-photos
+    gnome-screenshot
+    gnome-search-tool
+    gnome-session
+    gnome-shell
+    gnome-shell-extensions
+    gnome-system-log
+    gnome-tweak-tool
+    gnome-user-share
+    gucharmap
+    libmtp
+    libgnome-keyring
+    libxml2
+    mpg321
+    nautilus
+    shared-mime-info
+    transmission-gtk
+    vinagre
+    vino
+"""
+

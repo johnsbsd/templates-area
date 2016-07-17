@@ -1,0 +1,30 @@
+
+desc = """
+Mate desktop environment.
+"""
+
+deps = """
+xserver
+utils
+utils-x
+dm
+print
+internet
+sound-video
+office
+font
+graphic
+mate
+"""
+packages = """
+"""
+
+settings = """
+mate
+"""
+@DISTRO_SAFE@_deps="""
+ports
+mate
+common
+"""
+

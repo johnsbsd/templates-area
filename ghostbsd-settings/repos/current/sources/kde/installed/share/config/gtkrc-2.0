@@ -1,0 +1,10 @@
+include "/usr/local/share/themes/Adwaita/gtk-2.0/gtkrc"
+gtk-font-name="DejaVu Sans Book 9"
+gtk-theme-name="Adwaita"
+gtk-icon-theme-name="oxygen"
+gtk-toolbar-style=GTK_TOOLBAR_ICONS
+gtk-menu-images=1
+gtk-button-images=1
+agaida@razorbox:~/work/
+gtk-alternative-button-order=1
+

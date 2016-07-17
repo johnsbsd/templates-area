@@ -1,4 +1,5 @@
-share/ghostbsd/common-live-settings/base/backup/etc/rc.d/mountcritlocal
-share/ghostbsd/common-live-settings/base/override/etc/rc.d/mountcritlocal
-share/ghostbsd/common-live-settings/etc/rc.d/unionfs
-share/ghostbsd/common-live-settings/etc/rc.d/uzip
+share/desktopbsd/common-live-settings-desktopbsd/base/backup/etc/rc.d/mountcritlocal
+share/desktopbsd/common-live-settings-desktopbsd/base/override/etc/rc.d/mountcritlocal
+share/desktopbsd/common-live-settings-desktopbsd/etc/rc.d/unionfs
+share/desktopbsd/common-live-settings-desktopbsd/config-live-settings
+share/desktopbsd/common-live-settings-desktopbsd/etc/rc.d/uzip

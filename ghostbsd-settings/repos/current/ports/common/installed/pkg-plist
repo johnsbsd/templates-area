@@ -4,27 +4,27 @@ bin/xdrivers
 etc/PolicyKit/PolicyKit.conf
 etc/polkit-1/localauthority/50-local.d/org.freedesktop.consolekit.pkla
 etc/xdg/autostart/desktopsound.desktop
-share/ghostbsd/common-installed-settings/base/override/COPYRIGHT
-share/ghostbsd/common-installed-settings/base/override/boot/beastie.4th
-share/ghostbsd/common-installed-settings/base/override/boot/brand.4th
-share/ghostbsd/common-installed-settings/base/override/boot/loader.conf
-share/ghostbsd/common-installed-settings/base/override/boot/menu-commands.4th
-share/ghostbsd/common-installed-settings/base/override/boot/menu.4th
-share/ghostbsd/common-installed-settings/base/override/boot/splash.pcx
-share/ghostbsd/common-installed-settings/base/override/etc/devfs.conf
-share/ghostbsd/common-installed-settings/base/override/etc/devfs.rules
-share/ghostbsd/common-installed-settings/base/override/etc/gettytab
-share/ghostbsd/common-installed-settings/base/override/etc/motd
-share/ghostbsd/common-installed-settings/base/patches/devd.conf.extra
-share/ghostbsd/common-installed-settings/base/patches/make.conf.extra
-share/ghostbsd/common-installed-settings/base/patches/rc.conf.extra
-share/ghostbsd/common-installed-settings/base/patches/sysctl.conf.extra
-share/ghostbsd/common-installed-settings/packages/override/applications/SpiderOak.desktop
-share/ghostbsd/common-installed-settings/packages/override/applications/mc.desktop
-share/ghostbsd/common-installed-settings/packages/override/etc/X11/xorg.conf.orig
-share/ghostbsd/common-installed-settings/packages/override/etc/X11/xorg.conf.vbox
-share/sounds/ghostbsd/desktop-login.ogg
-@dir share/ghostbsd/common-installed-settings/base/backup/boot
-@dir share/ghostbsd/common-installed-settings/base/backup/etc
-@dir share/ghostbsd/common-installed-settings/packages/backup/applications
-@dir share/ghostbsd/common-installed-settings/packages/backup/etc/X11
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/COPYRIGHT
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/boot/beastie.4th
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/boot/brand.4th
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/boot/loader.conf
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/boot/menu-commands.4th
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/boot/menu.4th
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/boot/splash.pcx
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/etc/devfs.conf
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/etc/devfs.rules
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/etc/gettytab
+share/desktopbsd/common-installed-settings-desktopbsd/base/override/etc/motd
+share/desktopbsd/common-installed-settings-desktopbsd/base/patches/devd.conf.extra
+share/desktopbsd/common-installed-settings-desktopbsd/base/patches/make.conf.extra
+share/desktopbsd/common-installed-settings-desktopbsd/base/patches/rc.conf.extra
+share/desktopbsd/common-installed-settings-desktopbsd/base/patches/sysctl.conf.extra
+share/desktopbsd/common-installed-settings-desktopbsd/packages/override/applications/SpiderOak.desktop
+share/desktopbsd/common-installed-settings-desktopbsd/packages/override/applications/mc.desktop
+share/desktopbsd/common-installed-settings-desktopbsd/packages/override/etc/X11/xorg.conf.orig
+share/desktopbsd/common-installed-settings-desktopbsd/packages/override/etc/X11/xorg.conf.vbox
+share/sounds/desktopbsd/desktop-login.ogg
+@dir share/desktopbsd/common-installed-settings-desktopbsd/base/backup/boot
+@dir share/desktopbsd/common-installed-settings-desktopbsd/base/backup/etc
+@dir share/desktopbsd/common-installed-settings-desktopbsd/packages/backup/applications
+@dir share/desktopbsd/common-installed-settings-desktopbsd/packages/backup/etc/X11

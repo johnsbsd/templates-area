@@ -1,0 +1,14 @@
+
+desc = """
+Base desktop installer
+"""
+
+deps = """
+"""
+packages = """
+mc
+"""
+zbsd_deps="""
+common
+"""
+

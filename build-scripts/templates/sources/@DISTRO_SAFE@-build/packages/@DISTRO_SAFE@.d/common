@@ -1,0 +1,12 @@
+desc = """
+@DISTRO@ common settings
+"""
+
+packages = """
+@DISTRO_SAFE@-grub2-settings
+@DISTRO_SAFE@-installed-common-settings
+@DISTRO_SAFE@-live-common-settings
+"""
+
+settings="""
+"""

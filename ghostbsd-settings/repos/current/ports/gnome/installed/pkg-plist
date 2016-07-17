@@ -1,6 +1,6 @@
-share/ghostbsd/gnome-installed-settings/etc/default/grub
-share/ghostbsd/gnome-installed-settings/etc/polkit-1/localauthority/10-vendor.d/10-ghostbsd-gnome-installed-policy.pkla
-share/ghostbsd/gnome-installed-settings/etc/skel/dmrc
+share/desktopbsd/gnome-installed-settings-desktopbsd/etc/default/grub
+share/desktopbsd/gnome-installed-settings-desktopbsd/etc/polkit-1/localauthority/10-vendor.d/10-desktopbsd-gnome-installed-policy.pkla
+share/desktopbsd/gnome-installed-settings-desktopbsd/etc/skel/dmrc
 share/glib-2.0/schemas/90_org.gnome.desktop.background.gschema.override
 share/glib-2.0/schemas/90_org.gnome.desktop.interface.gschema.override
 share/glib-2.0/schemas/90_org.gnome.desktop.screensaver.wallpaper.gschema.override
@@ -8,4 +8,4 @@ share/glib-2.0/schemas/90_org.gnome.settings-daemon.plugins.xsettings.gschema.ov
 share/glib-2.0/schemas/90_org.gnome.shell.gschema.override
 share/glib-2.0/schemas/90_org.gnome.terminal.legacy.settings.gschema.override
 share/glib-2.0/schemas/90_org.gnome.totem.settings.gschema.override
-share/gnome-background-properties/ghostbsd.xml
+share/gnome-background-properties/desktopbsd.xml

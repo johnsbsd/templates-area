@@ -1,0 +1,2 @@
+[Directories-default]
+prefixes=/usr/local/share/@DISTRO_SAFE@-settings-kde-@CODENAME_SAFE@/

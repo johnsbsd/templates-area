@@ -1,0 +1,29 @@
+#!/bin/sh
+
+user_dirs()
+{
+mkdir -p /home/@DISTRO_SAFE@/Documents
+mkdir -p /home/@DISTRO_SAFE@/Downloads
+mkdir -p /home/@DISTRO_SAFE@/Movies 
+mkdir -p /home/@DISTRO_SAFE@/Music
+mkdir -p /home/@DISTRO_SAFE@/Pictures
+mkdir -p /home/@DISTRO_SAFE@/Desktop
+}
+
+desktop_icons()
+{
+if [ -e /usr/local/share/applications/@DISTRO_SAFE@-irc.desktop ] ; then
+    cp -af /usr/local/share/applications/@DISTRO_SAFE@-irc.desktop \
+    /home/@DISTRO_SAFE@/Desktop
+    chmod +x /home/@DISTRO_SAFE@/Desktop/@DISTRO_SAFE@-irc.desktop
+fi
+
+if [ -e /usr/local/share/applications/gbi.desktop ] ; then
+    cp -af /usr/local/share/applications/gbi.desktop \
+    /home/@DISTRO_SAFE@/Desktop
+    chmod +x /home/@DISTRO_SAFE@/Desktop/gbi.desktop
+fi
+}
+
+user_dirs
+desktop_icons

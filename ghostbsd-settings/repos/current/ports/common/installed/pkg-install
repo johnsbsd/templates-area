@@ -3,37 +3,37 @@
 backup_freebsd()
 {
     # backup old files from FreeBSD base system
-    for tocopy in $(ls /usr/local/share/ghostbsd/common-installed-settings/base/override/boot) ; do
+    for tocopy in $(ls /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/override/boot) ; do
        if [ -f /boot/$tocopy ]; then
-            cp -af /boot/$tocopy /usr/local/share/ghostbsd/common-installed-settings/base/backup/boot/
+            cp -af /boot/$tocopy /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/backup/boot/
         fi
     done
     # backup COPYRIGHT
-    cp -af /COPYRIGHT /usr/local/share/ghostbsd/common-installed-settings/base/backup/
+    cp -af /COPYRIGHT /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/backup/
 
     # backup files from etc
-    for tocopy in $(ls /usr/local/share/ghostbsd/common-installed-settings/base/override/etc)     ; do
+    for tocopy in $(ls /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/override/etc)     ; do
        if [ -f /etc/$tocopy ]; then
-            cp -af /etc/$tocopy /usr/local/share/ghostbsd/common-installed-settings/base/backup/etc/
+            cp -af /etc/$tocopy /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/backup/etc/
         fi
     done
-    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings/base/patches | cut -d . -f1,2) ; do
+    for files in $(ls /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/patches | cut -d . -f1,2) ; do
         if [ -f /etc/$files ]; then
-            cp -af /etc/$files /usr/local/share/ghostbsd/common-installed-settings/base/backup/etc/
+            cp -af /etc/$files /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/backup/etc/
         fi
     done
     
     # backup desktop files that will be override
-    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings/packages/override/applications) ; do
+    for files in $(ls /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/override/applications) ; do
         if [ -f /usr/local/share/applications/$files ]; then
-            cp -af  /usr/local/share/applications/$files /usr/local/share/ghostbsd/common-installed-settings/packages/backup/applications
+            cp -af  /usr/local/share/applications/$files /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/backup/applications
         fi
     done
 
     # backup desktop files that will be override
-    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings/packages/override/etc/X11) ; do
+    for files in $(ls /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/override/etc/X11) ; do
         if [ -f /etc/X11/$files ]; then
-            cp -af  /etc/X11/$files /usr/local/share/ghostbsd/common-installed-settings/packages/backup/etc/X11
+            cp -af  /etc/X11/$files /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/backup/etc/X11
         fi
     done
 
@@ -41,28 +41,28 @@ backup_freebsd()
 
 freebsd_overrides()
 {
-    cp -af /usr/local/share/ghostbsd/common-installed-settings/base/override/* /
+    cp -af /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/override/* /
 }
 
 packages_overrides()
 {
-    cp -af /usr/local/share/ghostbsd/common-installed-settings/packages/override/etc/* /etc
-    cp -af /usr/local/share/ghostbsd/common-installed-settings/packages/override/applications/* \
+    cp -af /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/override/etc/* /etc
+    cp -af /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/packages/override/applications/* \
     /usr/local/share/applications
 }
 
 patch_etc_files()
 {
-    for files in $(ls /usr/local/share/ghostbsd/common-installed-settings/base/patches | cut -d . -f1,2 |grep -v devd.conf | grep -v sysctl.conf) ; do
-        cat /usr/local/share/ghostbsd/common-installed-settings/base/patches/$files.extra >> /etc/$files
+    for files in $(ls /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/patches | cut -d . -f1,2 |grep -v devd.conf | grep -v sysctl.conf) ; do
+        cat /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/patches/$files.extra >> /etc/$files
     done
 
     if [ -z "$(cat /etc/devd.conf| grep ugen[0-9])" ] ; then
-         cat /usr/local/share/ghostbsd/common-installed-settings/base/patches/devd.conf.extra >> /etc/devd.conf
+         cat /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/patches/devd.conf.extra >> /etc/devd.conf
     fi
 
     if [ -z "$(cat /etc/sysctl.conf| grep vfs.usermount)" ] ; then
-         cat /usr/local/share/ghostbsd/common-installed-settings/base/patches/sysctl.conf.extra >> /etc/sysctl.conf
+         cat /usr/local/share/desktopbsd/common-installed-settings-desktopbsd/base/patches/sysctl.conf.extra >> /etc/sysctl.conf
     fi
 
 }

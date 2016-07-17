@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# $FreeBSD$
+# $Id: unionfs,v 1.7 2015/06/20 12:17:11 Angelescu Ovidiu Exp $
+#
+
+# PROVIDE: unionfs
+# REQUIRE: disks
+# BEFORE:  hostid
+# KEYWORD: nojail
+
+. /etc/rc.subr
+
+name="unionfs"
+start_cmd="unionfs_start"
+stop_cmd=""
+
+unionfs_start() {
+    unionsize="$(($(sysctl -n hw.usermem) / 2))b"
+    device=$(mdconfig -a -t malloc -s ${unionsize})
+    newfs /dev/${device} > /dev/null 2>&1
+    mount /dev/${device} /dist/union
+
+    while read uniondir; do
+        if [ ! -d /dist/union/${uniondir} ]; then
+            mkdir -p /dist/union/${uniondir}
+            if [ "${uniondir}" = "tmp" ]; then
+                chmod 1777 /dist/union/${uniondir}
+            fi
+        fi
+        mount_unionfs -o noatime -o copymode=transparent /dist/union/${uniondir} /${uniondir}
+    done < /dist/uniondirs
+    if [ -d /home/desktopbsd ]; then
+        chgrp -R 1000 /dist/union/home/desktopbsd
+        chown -R desktopbsd /dist/union/home/desktopbsd
+        chmod 755 /dist/union/home/desktopbsd
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"

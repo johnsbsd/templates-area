@@ -1,0 +1,29 @@
+#!/bin/sh
+
+user_dirs()
+{
+mkdir -p /home/desktopbsd/Documents
+mkdir -p /home/desktopbsd/Downloads
+mkdir -p /home/desktopbsd/Movies 
+mkdir -p /home/desktopbsd/Music
+mkdir -p /home/desktopbsd/Pictures
+mkdir -p /home/desktopbsd/Desktop
+}
+
+desktop_icons()
+{
+if [ -e /usr/local/share/applications/desktopbsd-irc.desktop ] ; then
+    cp -af /usr/local/share/applications/desktopbsd-irc.desktop \
+    /home/desktopbsd/Desktop
+    chmod +x /home/desktopbsd/Desktop/desktopbsd-irc.desktop
+fi
+
+if [ -e /usr/local/share/applications/gbi.desktop ] ; then
+    cp -af /usr/local/share/applications/gbi.desktop \
+    /home/desktopbsd/Desktop
+    chmod +x /home/desktopbsd/Desktop/gbi.desktop
+fi
+}
+
+user_dirs
+desktop_icons

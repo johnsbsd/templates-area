@@ -1,0 +1,11 @@
+desc = """
+Display Manager
+"""
+
+packages = """
+gdm
+"""
+
+settings="""
+dm
+"""

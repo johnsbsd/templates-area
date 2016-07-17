@@ -1,0 +1,14 @@
+
+desc = """
+Base desktop installer
+"""
+
+deps = """
+"""
+packages = """
+mc
+"""
+@DISTRO_SAFE@_deps="""
+common
+"""
+

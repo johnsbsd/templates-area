@@ -44,6 +44,7 @@ mv -f $(find ./sources/mate/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTR
  mv -f $(find ./sources/cinnamon -type f -name @DISTRO_SAFE@.xml) $(find ./sources/cinnamon -type f -name @DISTRO_SAFE@.xml | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
  mv -f $(find ./sources/cinnamon/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-cinnamon-installed-policy.pkla) $(find ./sources/cinnamon/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTRO_SAFE@-cinnamon-installed-policy.pkla | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
 
+
 # renames dirs under grub2
  mv -f $(find ./sources/grub2 -type d -name @DISTRO_SAFE@) $(find ./sources/grub2 -type d -name @DISTRO_SAFE@| sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
 
@@ -53,7 +54,7 @@ mv -f $(find ./sources/mate/installed/${DISTRO_SAFE}/etc -type f -name 10-@DISTR
 for i in $(ls ports/mate/installed/) ; do
 sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
-    -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
+    -e "s/\@DISTRO_USER\@/${DISTRO_USER}/g" \
     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
     -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
     -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
@@ -75,7 +76,7 @@ done
 for i in $(ls ports/gnome/installed/) ; do
 sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
-    -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
+    -e "s/\@DISTRO_USER\@/${DISTRO_USER}/g" \
     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
     -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
     -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
@@ -97,7 +98,7 @@ done
 for i in $(ls ports/cinnamon/installed/) ; do
 sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
-    -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
+    -e "s/\@DISTRO_USER\@/${DISTRO_USER}/g" \
     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
     -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
     -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
@@ -130,7 +131,7 @@ for i in $(ls ports/common/live/) ; do
 sed -e "s/\@DISTRO\@/${DISTRO}/g" \
     -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
-    -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
+    -e "s/\@DISTRO_USER\@/${DISTRO_USER}/g" \
     -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
     -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
     ../../templates/ports/common/live/$i \
@@ -146,6 +147,27 @@ sed     -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
     > ports/grub2/$i
 done
 
+# ports/kde
+for i in $(ls ports/kde/installed/) ; do
+sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@DISTRO_USER\@/${DISTRO_USER}/g" \
+    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/kde/installed/$i \
+    > ports/kde/installed/$i
+done
+
+for i in $(ls ports/kde/live/) ; do
+sed -e "s/\@DISTRO\@/${DISTRO}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+    ../../templates/ports/kde/live/$i \
+    > ports/kde/live/$i
+done
 
 
 ### COMMON ####
@@ -159,6 +181,26 @@ done
 #sources/common/live/config-live-settings
 sed -i '' "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
      sources/common/live/${DISTRO_SAFE}/common-live-settings-${CODENAME_SAFE}/config-live-settings
+
+### KDE ###
+#===============
+#
+
+for i in $(find  sources/kde -type f ) ; do
+sed -i '' -e "s/\@DISTRO\@/${DISTRO}/g" \
+    -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
+    -e "s/\@DISTRO_USER\@/${DISTRO_USER}/g" \
+    -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
+    -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
+    -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
+  $i
+done
+
+# renames files and dirs under kde settings
+mv -f $(find ./sources/kde -type f -name @DISTRO_SAFE@*) $(find ./sources/kde -type f -name @DISTRO_SAFE@* | sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g")
+for files in  $(find ./sources/kde -type f -name @DISTRO@*) ; do
+    mv -f $files  $(echo "$files" | sed -e "s/\@DISTRO\@/${DISTRO}/g")
+done
 
 ### MATE ####
 #================
@@ -276,7 +318,7 @@ sed -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
     for i in $(ls ports/xfce/installed/) ; do
         sed -e "s/\@DISTRO\@/${DISTRO}/g" \
         -e "s/\@DISTRO_SAFE\@/${DISTRO_SAFE}/g" \
-        -e "s/\@GHOSTBSD_USER\@/${GHOSTBSD_USER}/g" \
+        -e "s/\@DISTRO_USER\@/${DISTRO_USER}/g" \
         -e "s/\@CODENAME_SAFE\@/${CODENAME_SAFE}/g" \
         -e "s/\@PORT_VERSION\@/${PORT_VERSION}/g" \
         -e "s/\@ORGANIZATION\@/${ORGANIZATION}/g" \
@@ -322,7 +364,8 @@ done
 
     workdir=$(pwd)
     for i in $(find ports -type d -depth 2) ; do
-        cd $i && make makesum
+        cd $i 
+        #&& make makesum
         cd $workdir
     done
 fi
